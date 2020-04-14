@@ -6,13 +6,7 @@ import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule }    from '@angular/common/http';
 
-//AppModule
-import { AdminMainComponent } from './admin/admin-main/admin-main.component';
-import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
-import { AdminHolidayComponent } from './admin/admin-holiday/admin-holiday.component';
-import { AdminTimeplanComponent } from './admin/admin-timeplan/admin-timeplan.component';
-import { AdminBackupComponent } from './admin/admin-backup/admin-backup.component';
-import { AdminStudentComponent } from './admin/admin-student/admin-student.component';
+
 
 //Modules
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -36,6 +30,15 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatGridListModule } from '@angular/material/grid-list';
+
+//AppModule
+import { AdminMainComponent } from './admin/admin-main/admin-main.component';
+import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
+import { AdminHolidayComponent } from './admin/admin-holiday/admin-holiday.component';
+import { AdminTimeplanComponent } from './admin/admin-timeplan/admin-timeplan.component';
+import { AdminBackupComponent } from './admin/admin-backup/admin-backup.component';
+import { AdminStudentComponent } from './admin/admin-student/admin-student.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AdminInfoComponent } from './admin/admin-info/admin-info.component';
 
@@ -77,6 +80,7 @@ import { AdminInfoComponent } from './admin/admin-info/admin-info.component';
     MatExpansionModule,
     MatDatepickerModule,
     MatPaginatorModule,
+    MatGridListModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

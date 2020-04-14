@@ -1,1 +1,32 @@
-<p>admin-dashboard works!</p>
+<div class="dashboard">
+  <h1 class="main-title"> Bienvenue {{teacher.firstname | titlecase }} {{teacher.lastname | titlecase}}</h1>
+
+  <div class="clockingMachines">
+    <h2 class="title">Pointeuses</h2>
+    <mat-grid-list cols="2" rowHeight="2:1">
+      <mat-grid-tile>
+        <div class="machine">
+          <img src="assets/pointeuse.png">
+        </div>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <div class="machine">
+          <img src="assets/pointeuse.png">
+        </div>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <div class="machine">
+          <img src="assets/pointeuse.png">
+        </div>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <div class="machine">
+          <img src="assets/pointeuse.png">
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+</div>

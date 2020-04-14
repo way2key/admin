@@ -6,7 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-dashboard.component.scss']
 })
 export class AdminDashboardComponent implements OnInit {
-
+  teacher = {
+    firstname: 'Nom',
+    lastname: 'Prenom'
+  }
   constructor() { }
 
   ngOnInit(): void {
