@@ -6,10 +6,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-data-student.component.scss']
 })
 export class AdminDataStudentComponent implements OnInit {
-
+  students = [];
+  shownStudents = [];
   constructor() { }
 
   ngOnInit(): void {
+    this.getStudents();
+  }
+
+  getStudents(): void {
+    this.students.push({firstname:"Olivier",lastname:"Dancona"});
+    this.shownStudents = this.students;
   }
 
 }

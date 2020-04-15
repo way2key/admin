@@ -9,7 +9,8 @@ const userSchema = mongoose.Schema({
   type: {type: Number, required:true},
   data: {type: [String], required:false},
   performedTime:  {type: Number, required:false},
-  dayPlanId: {type: String, required:false, unique:true}
+  dayPlanId: {type: String, required:false, unique:true},
+  clockMachine: {type: String, required:false}
 });
 
 userSchema.plugin(uniqueValidator);

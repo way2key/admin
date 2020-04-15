@@ -1,1 +1,27 @@
-<p>admin-data-student works!</p>
+<div>
+  <mat-toolbar class="toolbar">
+    <form class="form">
+      <mat-form-field class="search">
+        <input type="text" placeholder="Trouvez un stagiaire" matInput [formControl]="myControl" [matAutocomplete]="auto" >
+        <button class="clear has-text-white" mat-button mat-icon-button matSuffix (click)="clearSearchField()" *ngIf="searchField">×</button>
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </form>
+  </mat-toolbar>
+</div>
+
+<div>
+  <h1>Liste des stagiaires</h1>
+  <div>
+    <ng-container *ngFor="let s of shownStudents">
+      <div class="student">
+        <div class="student-info">
+          <h1 matSubheader>{{s.firstname}} {{s.lastname}}</h1>
+        </div>
+      </div>
+    </ng-container>
+</div>
