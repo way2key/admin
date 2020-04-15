@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const db = require('./database/db');
 
 const adminAuthRoute = require('./route/admin-auth-route.js');
+const adminDashboardRoute = require('./route/admin-dashboard-route.js');
 
 const api = express();
 
@@ -15,7 +16,7 @@ api.use((req, res, next) => {
 });
 
 api.use(bodyParser.json());
-
+api.use('/api/admin-dashboard', adminDashboardRoute);
 api.use('/api/admin-auth', adminAuthRoute);
 
 

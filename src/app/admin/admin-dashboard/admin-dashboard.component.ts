@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AdminDashboardService } from '../admin-dashboard.service';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -10,9 +11,16 @@ export class AdminDashboardComponent implements OnInit {
     firstname: 'Nom',
     lastname: 'Prenom'
   }
-  constructor() { }
+  constructor(private adminDashboardService: AdminDashboardService) { }
 
   ngOnInit(): void {
+    this.getTeacher();
   }
+
+  getTeacher(): void {
+  this.adminDashboardService.getTeacher().subscribe(
+    teacher => this.teacher = teacher
+  )
+}
 
 }
