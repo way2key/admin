@@ -21,8 +21,12 @@
     "@angular/platform-browser": "~9.0.6",
     "@angular/platform-browser-dynamic": "~9.0.6",
     "@angular/router": "~9.0.6",
+    "bcrypt": "^4.0.1",
     "bulma": "^0.8.2",
+    "jsonwebtoken": "^8.5.1",
     "moment": "^2.24.0",
+    "mongoose": "^5.9.9",
+    "mongoose-unique-validator": "^2.0.3",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"

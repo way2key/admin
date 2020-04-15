@@ -1,0 +1,22 @@
+const express = require('express');
+const bodyParser = require('body-parser');
+
+const db = require('./database/db');
+
+const adminAuthRoute = require('./route/admin-auth-route.js');
+
+const api = express();
+
+api.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
+  next();
+});
+
+api.use(bodyParser.json());
+
+api.use('/api/admin-auth', adminAuthRoute);
+
+
+module.exports = api;
