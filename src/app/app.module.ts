@@ -35,24 +35,28 @@ import { MatGridListModule } from '@angular/material/grid-list';
 //AppModule
 import { AdminMainComponent } from './admin/admin-main/admin-main.component';
 import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
-import { AdminHolidayComponent } from './admin/admin-holiday/admin-holiday.component';
-import { AdminTimeplanComponent } from './admin/admin-timeplan/admin-timeplan.component';
 import { AdminBackupComponent } from './admin/admin-backup/admin-backup.component';
-import { AdminStudentComponent } from './admin/admin-student/admin-student.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AdminInfoComponent } from './admin/admin-info/admin-info.component';
+import { AdminDataComponent } from './admin/admin-data/admin-data.component';
+import { AdminDataStudentComponent } from './admin/admin-data-student/admin-data-student.component';
+import { AdminDataTimeplanComponent } from './admin/admin-data-timeplan/admin-data-timeplan.component';
+import { AdminDataHolidayComponent } from './admin/admin-data-holiday/admin-data-holiday.component';
+import { AdminStartComponent } from './admin/admin-start/admin-start.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AdminMainComponent,
     AdminDashboardComponent,
-    AdminHolidayComponent,
-    AdminTimeplanComponent,
     AdminBackupComponent,
-    AdminStudentComponent,
     AdminLoginComponent,
-    AdminInfoComponent
+    AdminInfoComponent,
+    AdminDataComponent,
+    AdminDataStudentComponent,
+    AdminDataTimeplanComponent,
+    AdminDataHolidayComponent,
+    AdminStartComponent
   ],
   imports: [
     BrowserModule,
