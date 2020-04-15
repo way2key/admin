@@ -8,11 +8,12 @@ import { AdminTimeplanComponent } from './admin/admin-timeplan/admin-timeplan.co
 import { AdminBackupComponent } from './admin/admin-backup/admin-backup.component';
 import { AdminInfoComponent } from './admin/admin-info/admin-info.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { AdminAuthGuard } from './admin/admin-auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/admin/login', pathMatch: 'full'},
   { path: 'admin', children:[
-    { path: '', component: AdminMainComponent,
+    { path: '', component: AdminMainComponent, canActivate: [AdminAuthGuard],
     children:[
       {path:"dashboard" , component: AdminDashboardComponent},
       {path:"holiday" , component: AdminHolidayComponent},
