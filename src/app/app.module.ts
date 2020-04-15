@@ -31,6 +31,9 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatButtonModule } from '@angular/material/button';
+
 
 //AppModule
 import { AdminMainComponent } from './admin/admin-main/admin-main.component';
@@ -85,6 +88,8 @@ import { AdminStartComponent } from './admin/admin-start/admin-start.component';
     MatDatepickerModule,
     MatPaginatorModule,
     MatGridListModule,
+    MatStepperModule,
+    MatButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
