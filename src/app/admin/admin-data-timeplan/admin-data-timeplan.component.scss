@@ -1,0 +1,23 @@
+.newTimePlan {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-left: 3%;
+  margin-right: 5%;
+}
+
+.timeChoice{
+  color: black;
+  font-size: 30px;
+  font-weight: bold;
+  background-color: inherit;
+  border-radius: 5px;
+  border-style: none;
+}
+.timeChoiceBody{
+  background-color: inherit;
+  margin: auto;
+  margin-left: 37px;
+  text-align: center;
+  border-color: inherit;
+}
