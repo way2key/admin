@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder} from '@angular/forms';
 import * as p5 from 'p5';
 import * as moment from 'moment';
+import { AdminDataService } from '../admin-data.service';
 
 @Component({
   selector: 'app-admin-data-timeplan',
@@ -19,8 +20,10 @@ export class AdminDataTimeplanComponent implements OnInit {
     mandatoryTime: new FormControl('')
   });
   canvas: any;
-
-  constructor(private formBuilder: FormBuilder) { }
+  shift = [];
+  startOfDay;
+  endOfDay;
+  constructor(private formBuilder: FormBuilder,private adminDataService: AdminDataService) { }
 
   ngOnInit(): void {
     this.initForm();
@@ -85,7 +88,8 @@ export class AdminDataTimeplanComponent implements OnInit {
       endMorning: '12:00',
       startAfternoon: '13:00',
       endAfternoon: '16:40',
-      endOfDay: '22:00'
+      endOfDay: '22:00',
+      mandatoryTime: '06:00'
     });
   }
 
@@ -101,8 +105,23 @@ export class AdminDataTimeplanComponent implements OnInit {
   }
 
   onSubmit(): void {
-    let time = this.timeplanForm.value;
-    console.log(time);
+    let shift = [];
+    shift.push({start:this.timeplanForm.value.startMorning,end:this.timeplanForm.value.endMorning});
+    shift.push({start:this.timeplanForm.value.startAfternoon,end:this.timeplanForm.value.endAfternoon});
+    let requiredTime = moment.duration(this.timeplanForm.value.mandatoryTime).asHours();
+    let startOfDay = this.timeplanForm.value.startOfDay;
+    let endOfDay = this.timeplanForm.value.endOfDay;
+    let payload = {
+      requiredTime:requiredTime,
+      shift:shift,
+      startOfDay:startOfDay,
+      endOfDay:endOfDay
+    };
+    this.adminDataService.createTimeplan(payload)
+    .subscribe(
+      error => console.log(error)
+
+    )
   }
 
 }

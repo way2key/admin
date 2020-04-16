@@ -19,6 +19,8 @@ exports.createTimeplan = (dayplan) => {
         result.forEach(shift => finalShift.push(shift.id));
         let newDayPlan = new DayPlan({
           requiredTime: dayplan.requiredTime,
+          startOfDay: dayplan.startOfDay,
+          endOfDay: dayplan.endOfDay,
           shift: finalShift,
         });
         return newDayPlan.save();
