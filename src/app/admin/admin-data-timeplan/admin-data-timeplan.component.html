@@ -1,40 +1,47 @@
 
 <h1>Nouvel Horaire</h1>
-<div class="newTimePlan">
-  <div class="time">
-    <form (change)="updateCanvasData()" (ngSubmit)="onSubmit()">
+<form [formGroup]="timeplanForm" (change)="updateCanvasData()" (ngSubmit)="onSubmit()">
+  <div class="newTimePlan">
+    <div class="time">
       <label>
         <h2>Début de la journée</h2>
-        <input type="time" class="time" value="06:00" >
+        <input type="time" class="time" formControlName="startOfDay" >
       </label>
       <label>
         <h2>Début des cours</h2>
-        <input type="time" class="time" value="09:00" >
+        <input type="time" class="time" formControlName="startMorning" >
       </label>
       <label>
         <h2>Début de la pause de midi</h2>
-        <input type="time" class="time" value="11:00" >
+        <input type="time" class="time" formControlName="endMorning" >
       </label>
       <label>
         <h2>Fin de la pause de midi</h2>
-        <input type="time" class="time" value="14:00" >
+        <input type="time" class="time" formControlName="startAfternoon" >
       </label>
       <label>
         <h2>Fin des cours</h2>
-        <input type="time" class="time" value="09:00" >
+        <input type="time" class="time" formControlName="endAfternoon" >
       </label>
       <label>
         <h2>Fin de la journée</h2>
-        <input type="time" class="time" value="22:00" >
+        <input type="time" class="time" formControlName="endOfDay" >
       </label>
-    </form>
-  </div>
+    </div>
 
-  <div id="p5-sketch"></div>
+    <div class="canvas">
+      <div id="p5-sketch"></div>
+      <label>
+        <h2>Temps réglementaire</h2>
+        <input type="time" class="time" formControlName="mandatoryTime" >
+      </label>
+    </div>
 
-  <div class="control">
-    <button mat-fab color="warn">✚</button>
+    <div class="control">
+      <button mat-fab color="warn" type="submit" [disabled]="!timeplanForm.valid">✚</button>
+    </div>
   </div>
-</div>
+</form>
 <br>
+<mat-divider></mat-divider>
 <h1>Horaires Existants</h1>

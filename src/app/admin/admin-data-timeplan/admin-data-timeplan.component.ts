@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormGroup, FormControl, FormArray } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder} from '@angular/forms';
 import * as p5 from 'p5';
 import * as moment from 'moment';
 
@@ -9,20 +9,22 @@ import * as moment from 'moment';
   styleUrls: ['./admin-data-timeplan.component.scss']
 })
 export class AdminDataTimeplanComponent implements OnInit {
+  timeplanForm = new FormGroup({
+    startOfDay: new FormControl(''),
+    startMorning: new FormControl(''),
+    endMorning: new FormControl(''),
+    startAfternoon: new FormControl(''),
+    endAfternoon: new FormControl(''),
+    endOfDay: new FormControl(''),
+    mandatoryTime: new FormControl('')
+  });
   canvas: any;
-  timeForm = new FormArray([
-    new FormControl(),
-    new FormControl(),
-    new FormControl(),
-    new FormControl(),
-    new FormControl(),
-    new FormControl()
-  ]);
-  shift = ["09:00:00","11:00:00","14:00:00","17:00:00"];
 
-  constructor() { }
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+    this.initForm();
+    this.updateCanvasData();
     this.drawTimeLine();
   }
 
@@ -41,12 +43,8 @@ export class AdminDataTimeplanComponent implements OnInit {
       s.draw = () => {
         s.clear();
         s.background(0,100);
-        // Baseline
-        s.strokeWeight(4);
-        s.stroke(0);
-        let baseline = s.line(x_start, y, x_end, y);
 
-        // data
+        // shift
         s.strokeWeight(4);
         s.stroke(0);
         s.fill(100,255,0,200);
@@ -57,6 +55,19 @@ export class AdminDataTimeplanComponent implements OnInit {
           let height = -s.height*0.2;
           s.rect(x_1, y_1, width, height);
         }
+
+        // boundary
+        s.stroke(100,10,0);
+        let x_time = s.map(this.startOfDay,0,24,x_start,x_end);
+        s.strokeWeight(4);
+        let startOfDayLine = s.line(x_time,0.80*s.height,x_time,0.5*s.height);;
+        let x_time2 = s.map(this.endOfDay,0,24,x_start,x_end);
+        let endOfDayLine = s.line(x_time2,0.80*s.height,x_time2,0.5*s.height);
+
+        // Baseline
+        s.strokeWeight(4);
+        s.stroke(0);
+        let baseline = s.line(x_start, y, x_end, y);
       };
 
     }
@@ -67,14 +78,31 @@ export class AdminDataTimeplanComponent implements OnInit {
     this.canvas.remove(p5);
   }
 
-  updateCanvasData(): void {
-    let time = this.timeForm.value.time;
-    console.log(time);
+  initForm() {
+    this.timeplanForm = this.formBuilder.group({
+      startOfDay: '06:00',
+      startMorning: '08:00',
+      endMorning: '12:00',
+      startAfternoon: '13:00',
+      endAfternoon: '16:40',
+      endOfDay: '22:00'
+    });
+  }
 
+  updateCanvasData(): void {
+    this.shift = [];
+    this.shift.push(this.timeplanForm.value.startMorning);
+    this.shift.push(this.timeplanForm.value.endMorning);
+    this.shift.push(this.timeplanForm.value.startAfternoon);
+    this.shift.push(this.timeplanForm.value.endAfternoon);
+    this.shift.sort();
+    this.startOfDay = moment.duration(this.timeplanForm.value.startOfDay).asHours();
+    this.endOfDay = moment.duration(this.timeplanForm.value.endOfDay).asHours();
   }
 
   onSubmit(): void {
-
+    let time = this.timeplanForm.value;
+    console.log(time);
   }
 
 }
