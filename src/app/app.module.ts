@@ -59,7 +59,7 @@ import { AdminStartComponent } from './admin/admin-start/admin-start.component';
     AdminDataStudentComponent,
     AdminDataTimeplanComponent,
     AdminDataHolidayComponent,
-    AdminStartComponent
+    AdminStartComponent,
   ],
   imports: [
     BrowserModule,
