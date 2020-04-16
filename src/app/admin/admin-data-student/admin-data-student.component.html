@@ -2,7 +2,7 @@
   <mat-toolbar class="toolbar">
     <form class="form">
       <mat-form-field class="search">
-        <input type="text" placeholder="Trouvez un stagiaire" matInput [formControl]="myControl" [matAutocomplete]="auto" >
+        <input type="text" placeholder="Trouvez un stagiaire" matInput [formControl]="interaction" [matAutocomplete]="auto" >
         <button class="clear has-text-white" mat-button mat-icon-button matSuffix (click)="clearSearchField()" *ngIf="searchField">×</button>
         <mat-autocomplete #auto="matAutocomplete">
           <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
@@ -15,6 +15,8 @@
 </div>
 
 <div>
+  <br>
+  <br>
   <h1>Liste des stagiaires</h1>
   <div>
     <ng-container *ngFor="let s of shownStudents">
