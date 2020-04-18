@@ -18,8 +18,17 @@ export class AdminDataService {
 
   createTimeplan(payload){
     const url = this.apiUrl + '-timeplan';
-    console.log(url);
 
     return this.http.post<any>(url, payload, this.httpOptions);
+  }
+
+  getTimeplan() {
+    const url = this.apiUrl + '-timeplan/timeplan';
+    return this.http.get<any>(url, this.httpOptions);
+  }
+
+  getShiftFromId(shiftId: string) {
+    const url = this.apiUrl + '-timeplan/shift/'+shiftId;
+    return this.http.get<any>(url, this.httpOptions);
   }
 }

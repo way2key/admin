@@ -8,6 +8,7 @@ const action = {
   getHoliday: holidayService.getHoliday,
   createTimeplan: timeplanService.createTimeplan,
   getTimeplan: timeplanService.getTimeplan,
+  getShiftFromId: timeplanService.getShiftFromId,
 }
 
 module.exports = action;

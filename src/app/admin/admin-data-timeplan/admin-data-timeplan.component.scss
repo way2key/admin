@@ -15,7 +15,29 @@
   border-style: none;
 }
 
-.canvas {
+.general {
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.dayPlan {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10px;
+  background-color: #778899;
+  margin: 4px;
+  padding: 2px;
+  padding-right: 8px;
+  padding-left: 6px;
+}
+
+.boundary {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+  width: 40%;
 }

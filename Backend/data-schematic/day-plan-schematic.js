@@ -6,6 +6,7 @@ const dayPlanSchema = mongoose.Schema({
   endOfDay: {type: String, required:true, default:"22:00:00"},
   requiredTime: {type: Number, required:true},
   shift: {type: [String], required:true},
+  name: {type: String, required:true}
 });
 
 dayPlanSchema.plugin(uniqueValidator);

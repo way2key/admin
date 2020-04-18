@@ -17,18 +17,21 @@ export class AdminDataTimeplanComponent implements OnInit {
     startAfternoon: new FormControl(''),
     endAfternoon: new FormControl(''),
     endOfDay: new FormControl(''),
-    mandatoryTime: new FormControl('')
+    mandatoryTime: new FormControl(''),
+    timeplanName: new FormControl('')
   });
   canvas: any;
   shift = [];
   startOfDay;
   endOfDay;
+  timeplans = [];
   constructor(private formBuilder: FormBuilder,private adminDataService: AdminDataService) { }
 
   ngOnInit(): void {
     this.initForm();
     this.updateCanvasData();
     this.drawTimeLine();
+    this.getTimeplan();
   }
 
   drawTimeLine() {
@@ -89,7 +92,8 @@ export class AdminDataTimeplanComponent implements OnInit {
       startAfternoon: '13:00',
       endAfternoon: '16:40',
       endOfDay: '22:00',
-      mandatoryTime: '06:00'
+      mandatoryTime: '06:00',
+      timeplanName: ''
     });
   }
 
@@ -111,16 +115,38 @@ export class AdminDataTimeplanComponent implements OnInit {
     let requiredTime = moment.duration(this.timeplanForm.value.mandatoryTime).asHours();
     let startOfDay = this.timeplanForm.value.startOfDay;
     let endOfDay = this.timeplanForm.value.endOfDay;
+    let name = this.timeplanForm.value.timeplanName;
     let payload = {
       requiredTime:requiredTime,
       shift:shift,
       startOfDay:startOfDay,
-      endOfDay:endOfDay
+      endOfDay:endOfDay,
+      name:name
     };
     this.adminDataService.createTimeplan(payload)
     .subscribe(
-      error => console.log(error)
+      error => this.getTimeplan()
+    )
+  }
 
+  getTimeplan(): void {
+    this.adminDataService.getTimeplan()
+    .subscribe(
+      timeplans => {
+        this.timeplans = timeplans;
+        for(let timeplan of this.timeplans){
+          timeplan.data = [];
+          for(let shiftId of timeplan.shift){
+            this.adminDataService.getShiftFromId(shiftId)
+            .subscribe(
+              data => {
+                timeplan.data.push(data.startTime);
+                timeplan.data.push(data.endTime);
+              }
+            )
+          }
+        }
+      }
     )
   }
 
