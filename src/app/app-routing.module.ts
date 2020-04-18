@@ -7,7 +7,6 @@ import { AdminInfoComponent } from './admin/admin-info/admin-info.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AdminAuthGuard } from './admin/admin-auth.guard';
 import { AdminStartComponent } from './admin/admin-start/admin-start.component';
-import { AdminClockMachineComponent } from './admin/admin-clock-machine/admin-clock-machine.component';
 import { AdminDataComponent } from './admin/admin-data/admin-data.component';
 import { AdminDataTimeplanComponent } from './admin/admin-data-timeplan/admin-data-timeplan.component';
 import { AdminDataHolidayComponent } from './admin/admin-data-holiday/admin-data-holiday.component';
@@ -26,7 +25,6 @@ const routes: Routes = [
         {path:"student"      , component: AdminDataStudentComponent},
       ]},
       {path:"backup" , component: AdminBackupComponent},
-      {path:"clock-machine" , component: AdminClockMachineComponent},
       {path:"info" , component: AdminInfoComponent},
     ]},
     {path: 'login', component: AdminLoginComponent,},
