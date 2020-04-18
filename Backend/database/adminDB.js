@@ -1,5 +1,5 @@
 const express = require('express');
-const db = express();
+const adminDB = express();
 
 
 const mongoose = require('mongoose');
@@ -11,4 +11,4 @@ mongoose.connect('mongodb://localhost:27017/admin',
 mongoose.set('useCreateIndex', true);
 mongoose.set('useFindAndModify', false);
 
-module.exports = db;
+module.exports = adminDB;

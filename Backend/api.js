@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
-const db = require('./database/db');
+const adminDB = require('./database/adminDB');
 
 const adminAuthRoute = require('./route/admin-auth-route.js');
 const adminDashboardRoute = require('./route/admin-dashboard-route.js');
