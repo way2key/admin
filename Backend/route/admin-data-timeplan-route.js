@@ -7,6 +7,6 @@ const adminDataTimeplan = require('../controller/admin-data-timeplan-controller'
 //Routes
 router.post('/', auth, adminDataTimeplan.createTimeplan);
 router.get('/shift/:shiftId', auth, adminDataTimeplan.getShiftFromId);
-router.get('/timeplan', auth, adminDataTimeplan.getTimeplan);
+router.get('/timeplan', adminDataTimeplan.getTimeplan);
 
 module.exports = router;
