@@ -11,3 +11,13 @@ exports.getAnAdmin = (req, res) => {
   )
 
 }
+
+exports.welcomeAMachine = (req, res) => {
+  action.welcomeAMachine(req.body)
+  .then(
+    (answer) => res.status(200).json(answer)
+  )
+  .catch(
+    error => res.status(500).json("Mauvaise annonce"+error)
+  )
+}

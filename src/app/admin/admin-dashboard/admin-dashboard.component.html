@@ -4,26 +4,9 @@
   <div class="clockingMachines">
     <h2 class="title">Pointeuses</h2>
     <mat-grid-list cols="2" rowHeight="2:1">
-      <mat-grid-tile>
+      <mat-grid-tile *ngFor="let cm of clockMachine">
         <div class="machine">
-          <img src="assets/pointeuse.png">
-        </div>
-      </mat-grid-tile>
-
-      <mat-grid-tile>
-        <div class="machine">
-          <img src="assets/pointeuse.png">
-        </div>
-      </mat-grid-tile>
-
-      <mat-grid-tile>
-        <div class="machine">
-          <img src="assets/pointeuse.png">
-        </div>
-      </mat-grid-tile>
-
-      <mat-grid-tile>
-        <div class="machine">
+          <h2>{{cm.name}}</h2>
           <img src="assets/pointeuse.png">
         </div>
       </mat-grid-tile>
