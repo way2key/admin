@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminDashboardService } from '../admin-dashboard.service';
 import * as moment from 'moment';
+import * as io from 'socket.io-client';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -12,11 +13,23 @@ export class AdminDashboardComponent implements OnInit {
     firstname: 'Nom',
     lastname: 'Prenom'
   }
-  clockMachine = [{name:"t21", entry:"12:49:00"}]
+  clockMachines = [];
   constructor(private adminDashboardService: AdminDashboardService) { }
 
   ngOnInit(): void {
     this.getTeacher();
+    const socket = io.connect("http://localhost:4000/dashboard");
+    socket.on('updateClockMachine', clockMachines => {
+      this.clockMachines = clockMachines;
+    })
+
+    socket.on('newClockMachine', machine => {
+      this.clockMachines.push(machine);
+    })
+
+    socket.on('clockMachineDisconnected', socketId => {
+      this.clockMachines = this.clockMachines.filter(item => item.socketId !== socketId);
+    })
   }
 
   getTeacher(): void {

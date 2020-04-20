@@ -1,5 +1,7 @@
 const http = require('http');
 const api = require('./api');
+const action = require('./action/action');
+const moment = require('moment');
 
 const normalizePort = val => {
   const port = parseInt(val, 10);
@@ -45,3 +47,36 @@ server.on('listening', () => {
 });
 
 server.listen(port);
+
+//Socket
+const io = require('socket.io').listen(server);
+var clockMachines = [];
+
+const dashboard = io
+.of('/dashboard')
+.on('connection', socket => {
+  console.log("Capitaine, le tableau de bord est connecté !");
+  socket.emit("updateClockMachine", clockMachines);
+  socket.on('update', ()=> console.log("patate"));
+  socket.on('disconnect', () => console.log('Capitaine, le tableau de bord vient de se déconnecter !'))
+})
+
+const clockMachine = io
+.of('/clockMachine')
+.on('connection', socket => {
+  console.log("Capitaine, une nouvelle pointeuse se pointe !");
+
+  socket.on('proclamation', machine => {
+    machine['socketId'] = socket.id;
+    machine['createdTime'] = moment().format();
+    clockMachines.push(machine);
+    dashboard.emit("newClockMachine", machine);
+  })
+
+  socket.on('disconnect', user => {
+    console.log("Pointeuse hors ligne");
+    clockMachines = clockMachines.filter(item => item.socketId !== socket.id);
+    dashboard.emit('clockMachineDisconnected', socket.id);
+  });
+
+});
