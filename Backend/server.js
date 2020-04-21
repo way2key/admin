@@ -56,19 +56,19 @@ const dashboard = io
 .of('/dashboard')
 .on('connection', socket => {
   console.log("Capitaine, le tableau de bord est connecté !");
-  socket.emit("updateClockMachine", clockMachines);
-  socket.on('update', ()=> console.log("patate"));
-  socket.on('disconnect', () => console.log('Capitaine, le tableau de bord vient de se déconnecter !'))
+  dashboard.emit("updateClockMachine", clockMachines);
+  dashboard.on('disconnect', () => console.log('Capitaine, le tableau de bord vient de se déconnecter !'))
 })
 
 const clockMachine = io
 .of('/clockMachine')
 .on('connection', socket => {
   console.log("Capitaine, une nouvelle pointeuse se pointe !");
+  clockMachine.emit("requestProclamation");
 
   socket.on('proclamation', machine => {
     machine['socketId'] = socket.id;
-    machine['createdTime'] = moment().format();
+    machine['createdTime'] = socket.handshake.time
     clockMachines.push(machine);
     dashboard.emit("newClockMachine", machine);
   })
