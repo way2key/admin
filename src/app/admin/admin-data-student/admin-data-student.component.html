@@ -1,6 +1,6 @@
 <div>
-  <mat-toolbar class="toolbar">
-    <form class="form">
+  <form class="form">
+    <mat-toolbar class="toolbar">
       <mat-form-field class="search">
         <input type="text" placeholder="Trouvez un stagiaire" matInput [formControl]="interaction" [matAutocomplete]="auto" >
         <button class="clear has-text-white" mat-button mat-icon-button matSuffix (click)="clearSearchField()" *ngIf="searchField">×</button>
@@ -10,8 +10,12 @@
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
-    </form>
-  </mat-toolbar>
+      <div>
+        <input type="file" class="button is-light" accept="text/csv" (change)="onFileSelect($event)">
+        <button class="button is-light" (click)="importStudent()">Importer les stagiaires</button>
+      </div>
+    </mat-toolbar>
+  </form>
 </div>
 
 <div>

@@ -2,20 +2,22 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
-
+import * as csv2json from 'csvjson-csv2json';
+import { AdminDataService } from '../admin-data.service';
 @Component({
   selector: 'app-admin-data-student',
   templateUrl: './admin-data-student.component.html',
   styleUrls: ['./admin-data-student.component.scss']
 })
 export class AdminDataStudentComponent implements OnInit {
+  data;
   students = [];
   shownStudents = [];
   searchField = '';
   interaction = new FormControl('');
   options: string[] = ['One', 'Two', 'Three'];
   filteredOptions: Observable<string[]>;
-  constructor() { }
+  constructor(private adminDataService: AdminDataService) { }
 
   ngOnInit(): void {
     this.getStudents();
@@ -27,7 +29,13 @@ export class AdminDataStudentComponent implements OnInit {
   }
 
   getStudents(): void {
-    this.students.push({firstname:"Olivier",lastname:"D'Ancona"},{firstname:"Ryan",lastname:"Quinn"});
+    this.adminDataService.getStudents()
+    .subscribe(
+      students => {
+        this.students = students;
+        this.shownStudents = students;
+      }
+    )
   }
 
   clearSearchField() {
@@ -43,4 +51,29 @@ export class AdminDataStudentComponent implements OnInit {
     return this.shownStudents.map(student => (student.firstname + " " + student.lastname))
   }
 
+  onFileSelect(event: Event) {
+   const file = (event.target as HTMLInputElement).files[0];
+   const reader = new FileReader();
+   reader.onload = (fileLoadedEvent) => {
+     const content = fileLoadedEvent.target.result.toString();
+     this.data = csv2json(content);
+   }
+   reader.readAsText(file, "UTF-8");
+   }
+
+   importStudent(){
+     if(this.data.length){
+       for(let user of this.data){
+         let payload = {
+           firstname: user.Firstname,
+           lastname: user.Lastname,
+           hash: user.hash
+         };
+         this.adminDataService.createAStudent(payload)
+         .subscribe(
+           () => this.getStudents()
+         );
+       }
+     }
+   }
 }

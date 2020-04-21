@@ -16,9 +16,8 @@ export class AdminDataService {
   };
   constructor(private http: HttpClient) { }
 
-  createTimeplan(payload){
+  createTimeplan(payload) {
     const url = this.apiUrl + '-timeplan';
-
     return this.http.post<any>(url, payload, this.httpOptions);
   }
 
@@ -30,5 +29,15 @@ export class AdminDataService {
   getShiftFromId(shiftId: string) {
     const url = this.apiUrl + '-timeplan/shift/'+shiftId;
     return this.http.get<any>(url, this.httpOptions);
+  }
+
+  getStudents() {
+    const url = this.apiUrl + '-student/';
+    return this.http.get<any>(url, this.httpOptions);
+  }
+
+  createAStudent(payload) {
+    const url = this.apiUrl + '-student/';
+    return this.http.post<any>(url, payload, this.httpOptions);
   }
 }

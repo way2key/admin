@@ -1,7 +1,7 @@
 const tokenService = require('./token-service.js');
 const holidayService = require("./holiday-service.js");
 const timeplanService = require("./timeplan-service.js");
-const welcomeMachineService = require("./welcome-machine-service.js");
+const studentService = require("./student-service.js");
 
 const action = {
   getAdminFromToken: tokenService.getAdminFromToken,
@@ -10,7 +10,8 @@ const action = {
   createTimeplan: timeplanService.createTimeplan,
   getTimeplan: timeplanService.getTimeplan,
   getShiftFromId: timeplanService.getShiftFromId,
-  welcomeAMachine: welcomeMachineService.welcomeAMachine,
+  createAStudent: studentService.createAStudent,
+  getAllStudents: studentService.getAllStudents,
 }
 
 module.exports = action;
