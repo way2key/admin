@@ -16,7 +16,12 @@
 }
 
 .machine {
+  margin:1em;
+  display: block;
+}
+
+.footer {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  flex-direction: row;
+  justify-content: space-around;
 }
