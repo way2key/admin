@@ -36,8 +36,13 @@ export class AdminDataService {
     return this.http.get<any>(url, this.httpOptions);
   }
 
-  createAStudent(payload) {
-    const url = this.apiUrl + '-student/';
+  createAStudent(url, payload) {
+    url = (url || this.apiUrl + '-student/');
     return this.http.post<any>(url, payload, this.httpOptions);
+  }
+
+  allotStudent(student) {
+    const url = this.apiUrl + '-student/';
+    return this.http.put<any>(url, student, this.httpOptions);
   }
 }

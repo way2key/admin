@@ -1,8 +1,7 @@
 <mat-toolbar class="toolbar">
   <div>
     <label> Répartition rapide </label>
-    <button class="button is-info" (click)="randomMachine()">Random</button>
-    <button class="button is-primary" (click)="alphabetical()">Alphabétique</button>
+    <button class="button is-info" (click)="randomMachine(clockMachines)">Random</button>
   </div>
   <mat-form-field class="search">
     <input type="text" placeholder="Trouvez un stagiaire" matInput [formControl]="interaction" [matAutocomplete]="auto" >
@@ -22,10 +21,7 @@
       <div class="student-button">
         <h1 matSubheader>{{s.firstname}} {{s.lastname}}</h1>
         <div class="buttons has-addons">
-          <button class="button is-link"></button>
-          <button class="button is-info"></button>
-          <button class="button is-success"></button>
-          <button class="button is-warning"></button>
+          <button class="button is-link" *ngFor="let cm of clockMachines" (click)="s.clockMachine=cm._id">{{cm.title}}</button>
         </div>
       </div>
     </div>
@@ -36,15 +32,20 @@
   <h2>Machines disponibles</h2>
   <mat-grid-list cols="2" rowHeight="2:1">
     <mat-grid-tile *ngFor="let cm of clockMachines">
-      <div class="machine">
-      </div>
-      <mat-grid-tile-header class="header">
-        <p>{{cm.title}}</p>
-      </mat-grid-tile-header>
-
+      <mat-grid-tile-header class="header">{{cm.title}}</mat-grid-tile-header>
+      <ng-container *ngFor="let s of students">
+        <div class="student" *ngIf="s.clockMachine==cm._id">
+          <h1 matSubheader>{{s.firstname}} {{s.lastname}}</h1>
+          <div class="student-button">
+            <div class="buttons has-addons">
+              <button class="button is-link" *ngFor="let cm of clockMachines">{{cm.title}}</button>
+            </div>
+          </div>
+        </div>
+      </ng-container>
     </mat-grid-tile>
   </mat-grid-list>
 </div>
 
 
-<button class="button is-success">Valider</button>
+<button mat-dialog-close class="button is-success" (click)="allotStudent()">Valider</button>

@@ -19,3 +19,13 @@ exports.getAllStudents = (req, res) => {
     error => res.status(500).json("Impossible to fetch students :( <= "+error)
   )
 }
+
+exports.allotStudent = (req, res) => {
+  action.allotStudent(req.body)
+  .then(
+    () => res.status(200).json("Stagiaire modifié!")
+  )
+  .catch(
+    error => res.status(500).json("Impossible to modify student <= "+error)
+  )
+}

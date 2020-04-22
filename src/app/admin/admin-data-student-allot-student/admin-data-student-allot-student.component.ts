@@ -4,6 +4,7 @@ import { map, startWith } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { FormGroup, FormControl } from '@angular/forms';
 import * as io from 'socket.io-client';
+import { AdminDataService } from '../admin-data.service';
 
 @Component({
   selector: 'app-admin-data-student-allot-student',
@@ -17,7 +18,7 @@ export class AdminDataStudentAllotStudentComponent implements OnInit {
   searchField = '';
   interaction = new FormControl('');
   filteredOptions: Observable<string[]>;
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any,private adminDataService: AdminDataService) { }
 
   ngOnInit(): void {
     this.students = this.data;
@@ -54,12 +55,29 @@ export class AdminDataStudentAllotStudentComponent implements OnInit {
     this.searchField = '';
   }
 
-  randomMachine(): void {
-
+  randomMachine(machines): void {
+    for(let s of this.students){
+      s.clockMachine = machines[Math.floor(Math.random()*machines.length)]._id;
+    }
   }
 
-  alphabetical(): void {
+  allotStudent(): void {
+    const promises = this.students.map(s => {
+      return this.adminDataService.allotStudent(s).subscribe();
+    });
 
+    Promise.all(promises)
+    .then(
+      () => {
+        this.clockMachines.map(cm =>{
+          let url = cm.url.split("/teacher")[0];
+          this.students.map(s => {
+            if(s.clockMachine == cm._id){
+              this.adminDataService.createAStudent(url,s).subscribe();
+            }
+          })
+        })
+      }
+    )
   }
-
 }

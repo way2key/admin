@@ -12,6 +12,7 @@ const action = {
   getShiftFromId: timeplanService.getShiftFromId,
   createAStudent: studentService.createAStudent,
   getAllStudents: studentService.getAllStudents,
+  allotStudent: studentService.allotStudent,
 }
 
 module.exports = action;

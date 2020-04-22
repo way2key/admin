@@ -28,3 +28,16 @@ exports.getAllStudents = () => {
     .catch(error => reject("Unable to fetch Student from db <= "+error));
   })
 }
+
+exports.allotStudent = (student) => {
+  return new Promise( (resolve, reject) => {
+    console.log(student);
+    User.updateOne({_id:student._id},{...student, _id:student._id})
+    .then(
+      () => resolve('success')
+    )
+    .catch(
+      error => reject("Unable to put student to DB :( <= "+error)
+    )
+  })
+}

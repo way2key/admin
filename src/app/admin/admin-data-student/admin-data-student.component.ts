@@ -71,7 +71,7 @@ export class AdminDataStudentComponent implements OnInit {
            lastname: user.Lastname,
            hash: user.hash
          };
-         this.adminDataService.createAStudent(payload)
+         this.adminDataService.createAStudent(null,payload)
          .subscribe(
            () => this.getStudents()
          );
