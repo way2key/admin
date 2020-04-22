@@ -46,6 +46,7 @@ import { AdminDataStudentComponent } from './admin/admin-data-student/admin-data
 import { AdminDataTimeplanComponent } from './admin/admin-data-timeplan/admin-data-timeplan.component';
 import { AdminDataHolidayComponent } from './admin/admin-data-holiday/admin-data-holiday.component';
 import { AdminStartComponent } from './admin/admin-start/admin-start.component';
+import { AdminDataStudentAllotStudentComponent } from './admin/admin-data-student-allot-student/admin-data-student-allot-student.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { AdminStartComponent } from './admin/admin-start/admin-start.component';
     AdminDataTimeplanComponent,
     AdminDataHolidayComponent,
     AdminStartComponent,
+    AdminDataStudentAllotStudentComponent,
   ],
   imports: [
     BrowserModule,

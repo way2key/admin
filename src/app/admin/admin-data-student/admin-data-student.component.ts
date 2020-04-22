@@ -4,6 +4,9 @@ import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import * as csv2json from 'csvjson-csv2json';
 import { AdminDataService } from '../admin-data.service';
+import { MatDialog } from '@angular/material/dialog';
+import { AdminDataStudentAllotStudentComponent } from '../admin-data-student-allot-student/admin-data-student-allot-student.component';
+
 @Component({
   selector: 'app-admin-data-student',
   templateUrl: './admin-data-student.component.html',
@@ -15,9 +18,8 @@ export class AdminDataStudentComponent implements OnInit {
   shownStudents = [];
   searchField = '';
   interaction = new FormControl('');
-  options: string[] = ['One', 'Two', 'Three'];
   filteredOptions: Observable<string[]>;
-  constructor(private adminDataService: AdminDataService) { }
+  constructor(private adminDataService: AdminDataService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.getStudents();
@@ -75,5 +77,9 @@ export class AdminDataStudentComponent implements OnInit {
          );
        }
      }
+   }
+
+   allotStudent(){
+     let dialogRef = this.dialog.open(AdminDataStudentAllotStudentComponent, {data: this.students, height:'90%', width: '65%'});
    }
 }

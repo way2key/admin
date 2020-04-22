@@ -68,7 +68,8 @@ const clockMachine = io
 
   socket.on('proclamation', machine => {
     machine['socketId'] = socket.id;
-    machine['createdTime'] = socket.handshake.time
+    machine['createdTime'] = socket.handshake.time;
+    machine['url'] = "http://"+socket.handshake.headers.host.split(":")[0]+":4200/teacher/login";
     clockMachines.push(machine);
     dashboard.emit("newClockMachine", machine);
   })
@@ -80,3 +81,12 @@ const clockMachine = io
   });
 
 });
+
+
+const allotStudent = io
+.of('/allotStudent')
+.on('connection', socket => {
+  console.log("Capitaine, l'outils de répartition est en ligne");
+  allotStudent.emit("updateClockMachine", clockMachines);
+  allotStudent.on('disconnect', () => console.log("Capitaine, l'outil de réparation est hors-ligne"))
+})

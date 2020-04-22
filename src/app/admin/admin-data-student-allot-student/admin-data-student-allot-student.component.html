@@ -1,0 +1,50 @@
+<mat-toolbar class="toolbar">
+  <div>
+    <label> Répartition rapide </label>
+    <button class="button is-info" (click)="randomMachine()">Random</button>
+    <button class="button is-primary" (click)="alphabetical()">Alphabétique</button>
+  </div>
+  <mat-form-field class="search">
+    <input type="text" placeholder="Trouvez un stagiaire" matInput [formControl]="interaction" [matAutocomplete]="auto" >
+    <button class="clear has-text-white" mat-button mat-icon-button matSuffix (click)="clearSearchField()" *ngIf="searchField">×</button>
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+        {{option}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</mat-toolbar>
+
+<div class="pool">
+  <h2>Stagiaires à placer</h2>
+  <ng-container *ngFor="let s of shownStudents">
+    <div class="student">
+      <div class="student-button">
+        <h1 matSubheader>{{s.firstname}} {{s.lastname}}</h1>
+        <div class="buttons has-addons">
+          <button class="button is-link"></button>
+          <button class="button is-info"></button>
+          <button class="button is-success"></button>
+          <button class="button is-warning"></button>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div>
+
+<div class="allot">
+  <h2>Machines disponibles</h2>
+  <mat-grid-list cols="2" rowHeight="2:1">
+    <mat-grid-tile *ngFor="let cm of clockMachines">
+      <div class="machine">
+      </div>
+      <mat-grid-tile-header class="header">
+        <p>{{cm.title}}</p>
+      </mat-grid-tile-header>
+
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
+
+
+<button class="button is-success">Valider</button>
