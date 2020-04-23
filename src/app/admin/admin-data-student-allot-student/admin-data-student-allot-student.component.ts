@@ -73,6 +73,8 @@ export class AdminDataStudentAllotStudentComponent implements OnInit {
           let url = cm.url.split("/teacher")[0];
           this.students.map(s => {
             if(s.clockMachine == cm._id){
+              console.log(url);
+
               this.adminDataService.createAStudent(url,s).subscribe();
             }
           })

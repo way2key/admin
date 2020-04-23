@@ -37,7 +37,7 @@ export class AdminDataService {
   }
 
   createAStudent(url, payload) {
-    url = (url || this.apiUrl + '-student/');
+    url = url || (this.apiUrl + '-student/');
     return this.http.post<any>(url, payload, this.httpOptions);
   }
 
