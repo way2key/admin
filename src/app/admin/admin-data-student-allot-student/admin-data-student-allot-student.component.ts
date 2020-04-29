@@ -74,8 +74,6 @@ export class AdminDataStudentAllotStudentComponent implements OnInit {
           this.students.map(s => {
             if(s.clockMachine == cm._id){
               s.timeplanId = cm.timeplan;
-              console.log(cm);
-
               this.adminDataService.createAStudent(url,s).subscribe();
             }
           })
