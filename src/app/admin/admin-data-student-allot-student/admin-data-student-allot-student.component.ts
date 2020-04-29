@@ -70,11 +70,9 @@ export class AdminDataStudentAllotStudentComponent implements OnInit {
     .then(
       () => {
         this.clockMachines.map(cm =>{
-          let url = cm.url.split("/teacher")[0];
+          let url = cm.url.split(":4200")[0] + ':3000/api/teacher-auth/signup/user';
           this.students.map(s => {
             if(s.clockMachine == cm._id){
-              console.log(url);
-
               this.adminDataService.createAStudent(url,s).subscribe();
             }
           })

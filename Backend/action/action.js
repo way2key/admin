@@ -1,7 +1,7 @@
 const tokenService = require('./token-service.js');
 const holidayService = require("./holiday-service.js");
 const timeplanService = require("./timeplan-service.js");
-const studentService = require("./student-service.js");
+const userService = require("./user-service.js");
 
 const action = {
   getAdminFromToken: tokenService.getAdminFromToken,
@@ -10,9 +10,10 @@ const action = {
   createTimeplan: timeplanService.createTimeplan,
   getTimeplan: timeplanService.getTimeplan,
   getShiftFromId: timeplanService.getShiftFromId,
-  createAStudent: studentService.createAStudent,
-  getAllStudents: studentService.getAllStudents,
-  allotStudent: studentService.allotStudent,
+  createAStudent: userService.createAStudent,
+  getAllStudents: userService.getAllStudents,
+  allotStudent: userService.allotStudent,
+  getUserFromToken: userService.getUserFromToken,
 }
 
 module.exports = action;

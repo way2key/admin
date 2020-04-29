@@ -1,4 +1,7 @@
 const User = require('../data-schematic/user-schematic');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const secret = require('../secret');
 
 
 exports.createAStudent = (student) => {
@@ -39,5 +42,20 @@ exports.allotStudent = (student) => {
     .catch(
       error => reject("Unable to put student to DB :( <= "+error)
     )
+  })
+}
+
+exports.getUserFromToken = (token) => {
+  return new Promise( (resolve, reject) => {
+    try {
+      verifiedJwt = jwt.verify(token, secret);
+    }
+    catch {
+      reject("Unable to parse token")
+    }
+    let userId= verifiedJwt.userId;
+    User.findOne({_id: userId})
+    .then((teacher) => resolve(teacher))
+    .catch(error => reject(teacher));
   })
 }

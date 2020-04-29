@@ -6,7 +6,7 @@ const adminDataStudentController = require('../controller/admin-data-student-con
 
 //Routes
 router.put('/', auth, adminDataStudentController.allotStudent);
-router.post('/', auth, adminDataStudentController.createAStudent);
+router.post('/', adminDataStudentController.createAStudent);
 router.get('/', auth, adminDataStudentController.getAllStudents);
 
 module.exports = router;
