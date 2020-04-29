@@ -4,10 +4,9 @@ const jwt = require('jsonwebtoken');
 const secret = require('../secret.js');
 
 exports.login = (req, res, next) => {
-
     User.findOne({firstname: req.body.username})
     .then(usr => {
-      if(!usr || usr.type !== 1){
+      if(!usr || usr.type !== 2){
         return res.status(401).json({error: "Utilisateur inexistant ou Mot de passe incorrect"});
       }
       bcrypt.compare(req.body.password, usr.password)
@@ -16,7 +15,6 @@ exports.login = (req, res, next) => {
           return res.status(401).json({error: "Utilisateur inexistant ou Mot de passe incorrect."});
         }
         res.status(200).json({
-
           userId: usr._id,
           token: jwt.sign(
             {userId: usr._id},
@@ -37,8 +35,7 @@ exports.signupAdmin = (req, res, next) => {
         firstname: req.body.firstname,
         lastname: req.body.lastname,
         password: cryptedPassword,
-        type: 1,
-        dayPlanId: req.body.dayPlanId
+        type: 2
     });
     usr.save()
     .then(() => res.status(201).json({message: 'Administrateur enregistré'}))
@@ -55,7 +52,7 @@ exports.signupUser = (req, res, next) => {
     hash: req.body.hash,
     type: 0,
     performedTime: req.body.performedTime,
-    dayPlanId: req.body.dayPlanId
+    timeplanId: req.body.timeplanId
   });
   usr.save()
   .then(() => res.status(201).json({ message: 'Utilisateur enregistré'}))

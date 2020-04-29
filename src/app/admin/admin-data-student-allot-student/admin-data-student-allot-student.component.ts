@@ -73,6 +73,9 @@ export class AdminDataStudentAllotStudentComponent implements OnInit {
           let url = cm.url.split(":4200")[0] + ':3000/api/teacher-auth/signup/user';
           this.students.map(s => {
             if(s.clockMachine == cm._id){
+              s.timeplanId = cm.timeplan;
+              console.log(cm);
+
               this.adminDataService.createAStudent(url,s).subscribe();
             }
           })

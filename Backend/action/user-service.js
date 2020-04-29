@@ -11,6 +11,7 @@ exports.createAStudent = (student) => {
       lastname: student.lastname,
       hash: student.hash,
       clockMachine: student.clockMachine,
+      timeplanId: student.timeplanId,
       type: 0
     });
 
@@ -34,7 +35,6 @@ exports.getAllStudents = () => {
 
 exports.allotStudent = (student) => {
   return new Promise( (resolve, reject) => {
-    console.log(student);
     User.updateOne({_id:student._id},{...student, _id:student._id})
     .then(
       () => resolve('success')
