@@ -45,4 +45,15 @@ export class AdminDataService {
     const url = this.apiUrl + '-student/';
     return this.http.put<any>(url, student, this.httpOptions);
   }
+
+  createHoliday(payload) {
+    const url = this.apiUrl + '-holiday/';
+    return this.http.post<any>(url, payload, this.httpOptions);
+  }
+
+  getHoliday() {
+    const url = this.apiUrl + '-holiday/';
+    return this.http.get<any>(url, this.httpOptions);
+  }
+
 }

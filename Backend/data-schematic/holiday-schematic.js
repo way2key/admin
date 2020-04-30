@@ -3,9 +3,9 @@ const uniqueValidator = require('mongoose-unique-validator');
 
 const holidaySchema = mongoose.Schema({
   title: {type: String, required:true},
-  startTime: {type: String, required:true},
-  endTime: {type: String, required:true},
-  allowPresence: {type: Boolean, required:true},
+  startDate: {type: String, required:true},
+  endDate: {type: String, required:true},
+  allowPresence: {type: Boolean, required:true, default:true},
 });
 
 holidaySchema.plugin(uniqueValidator);

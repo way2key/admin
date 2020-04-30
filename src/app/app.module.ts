@@ -33,6 +33,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatButtonModule } from '@angular/material/button';
+import { MatMomentDateModule } from '@angular/material-moment-adapter'
 
 
 //AppModule
@@ -92,6 +93,7 @@ import { AdminDataStudentAllotStudentComponent } from './admin/admin-data-studen
     MatGridListModule,
     MatStepperModule,
     MatButtonModule,
+    MatMomentDateModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

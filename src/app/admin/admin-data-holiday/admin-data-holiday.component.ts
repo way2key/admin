@@ -1,4 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup} from '@angular/forms';
+import { MAT_MOMENT_DATE_FORMATS, MomentDateAdapter } from '@angular/material-moment-adapter';
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+import { AdminDataService } from '../admin-data.service';
+import * as _moment from 'moment';
+
+const moment = _moment;
 
 @Component({
   selector: 'app-admin-data-holiday',
@@ -6,10 +13,45 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-data-holiday.component.scss']
 })
 export class AdminDataHolidayComponent implements OnInit {
-
-  constructor() { }
+  holidayForm = new FormGroup({
+    startDate: new FormControl(''),
+    endDate: new FormControl(''),
+    title: new FormControl(''),
+    allowPresence: new FormControl('')
+  });
+  holiday;
+  choice = true;
+  constructor(private adminDataService:AdminDataService) { }
 
   ngOnInit(): void {
+    this.getHoliday();
+  }
+
+  createHoliday(): void {
+    if(!this.choice){
+      this.holidayForm.value.endDate = this.holidayForm.value.startDate;
+    }
+    let date1 = moment(this.holidayForm.value.startDate).format("YYYY/MM/DD");
+    let date2 = moment(this.holidayForm.value.endDate).format("YYYY/MM/DD");
+    let payload = {
+      title: this.holidayForm.value.title,
+      allowPresence: this.holidayForm.value.allowPresence || false,
+      startDate: date1,
+      endDate: date2,
+    }
+
+    this.adminDataService.createHoliday(payload).subscribe();
+  }
+
+  getHoliday(): void {
+    this.adminDataService.getHoliday()
+    .subscribe(
+      holidays => {
+        this.holidays = holidays;
+        this.getHoliday();
+      }
+    );
+
   }
 
 }

@@ -2,12 +2,10 @@ const Holiday = require('../data-schematic/holiday-schematic');
 
 
 exports.createHoliday = (holiday) => {
+  console.log(holiday);
   return new Promise( (resolve, reject) => {
     let newHoliday = new Holiday({
-      title: holiday.title,
-      startTime: holiday.startTime,
-      endTime: holiday.endTime,
-      allowPresence: holiday.allowPresence,
+      ...holiday
     });
 
     newHoliday.save()
