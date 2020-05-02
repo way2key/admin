@@ -19,7 +19,7 @@ export class AdminDataHolidayComponent implements OnInit {
     title: new FormControl(''),
     allowPresence: new FormControl('')
   });
-  holiday;
+  holidays;
   choice = true;
   constructor(private adminDataService:AdminDataService) { }
 
