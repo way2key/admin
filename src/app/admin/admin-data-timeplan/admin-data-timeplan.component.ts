@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder} from '@angular/forms';
 import * as p5 from 'p5';
-import * as moment from 'moment';
+import * as moment from 'moment/moment';
 import { AdminDataService } from '../admin-data.service';
 
 @Component({

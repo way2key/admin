@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminDashboardService } from '../admin-dashboard.service';
-import * as moment from 'moment';
+import * as moment from 'moment/moment';
 import * as io from 'socket.io-client';
 
 @Component({

@@ -3,7 +3,7 @@ import { FormControl, FormGroup} from '@angular/forms';
 import { MAT_MOMENT_DATE_FORMATS, MomentDateAdapter } from '@angular/material-moment-adapter';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { AdminDataService } from '../admin-data.service';
-import * as _moment from 'moment';
+import * as _moment from 'moment/moment';
 
 const moment = _moment;
 
