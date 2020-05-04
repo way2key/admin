@@ -67,8 +67,8 @@ export class AdminDataStudentComponent implements OnInit {
      if(this.data.length){
        for(let user of this.data){
          let payload = {
-           firstname: user.Firstname,
-           lastname: user.Lastname,
+           firstname: user.firstname,
+           lastname: user.lastname,
            hash: user.hash
          };
          this.adminDataService.createAStudent(null,payload)
