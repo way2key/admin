@@ -150,4 +150,11 @@ export class AdminDataTimeplanComponent implements OnInit {
     )
   }
 
+  deleteTimeplan(timeplanId): void {
+    this.adminDataService.deleteTimeplan(timeplanId)
+    .subscribe(
+      () => this.getTimeplan()
+    );
+  }
+
 }

@@ -56,4 +56,9 @@ export class AdminDataService {
     return this.http.get<any>(url, this.httpOptions);
   }
 
+  deleteTimeplan(timeplanId) {
+    const url = this.apiUrl + '-timeplan/timeplan/' + timeplanId;
+    return this.http.delete<any>(url, this.httpOptions);
+  }
+
 }

@@ -44,6 +44,19 @@ exports.getTimeplan = () => {
   })
 }
 
+exports.deleteTimeplan = (timeplanId) => {
+  console.log("oui");
+  return new Promise( (resolve, reject) => {
+    DayPlan.findByIdAndRemove(timeplanId)
+    .then(
+      () => resolve("Timeplan supprimé")
+    )
+    .catch(
+      error => reject("Impossible de supprimer le timeplan " + timeplanId + " <= " + error)
+    )
+  })
+}
+
 exports.getShiftFromId = (shiftId) => {
   return new Promise( (resolve, reject) => {
     Shift.findOne({_id:shiftId})

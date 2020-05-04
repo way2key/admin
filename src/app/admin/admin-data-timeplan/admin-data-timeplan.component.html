@@ -64,5 +64,8 @@
     <p>{{"Fin de la pause: "+timeplan.data[2]}}</p>
     <p>{{"Fin des cours: "+timeplan.data[3]}}</p>
     </div>
+    <div class="action">
+      <button type="button" class="button is-danger" (click)="deleteTimeplan(timeplan._id)"><i class="fas fa-trash"></i></button>
+    </div>
   </div>
 </div>

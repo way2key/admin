@@ -29,3 +29,13 @@ exports.getShiftFromId = (req, res) => {
     error => res.status(500).json("Impossible to fetch shift :( <= "+error)
   )
 }
+
+exports.deleteTimeplan = (req, res) => {
+  action.deleteTimeplan(req.params.timeplanId)
+  .then(
+    shift => res.status(200).json("Timeplan supprimé")
+  )
+  .catch(
+    error => res.status(500).json("Impossible to fetch shift")
+  )
+}

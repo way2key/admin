@@ -10,6 +10,7 @@ const action = {
   createTimeplan: timeplanService.createTimeplan,
   getTimeplan: timeplanService.getTimeplan,
   getShiftFromId: timeplanService.getShiftFromId,
+  deleteTimeplan: timeplanService.deleteTimeplan,
   createAStudent: userService.createAStudent,
   getAllStudents: userService.getAllStudents,
   allotStudent: userService.allotStudent,
