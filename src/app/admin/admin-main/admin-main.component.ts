@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminAuthService } from '../admin-auth.service';
+import { AdminDashboardService } from '../admin-dashboard.service';
+
 
 @Component({
   selector: 'app-admin-main',
@@ -7,14 +9,24 @@ import { AdminAuthService } from '../admin-auth.service';
   styleUrls: ['./admin-main.component.scss']
 })
 export class AdminMainComponent implements OnInit {
-
-  constructor(private adminAuthService: AdminAuthService) { }
+  admin = {
+    firstname: "Nom",
+    lastname: "Prénom",
+  };
+  constructor(private adminAuthService: AdminAuthService, private adminDashboardService: AdminDashboardService) { }
 
   ngOnInit(): void {
+    this.getAdmin();
   }
 
   logAdminOut(): void {
     this.adminAuthService.logUserOut();
+  }
+
+  getAdmin(): void {
+    this.adminDashboardService.getAdmin().subscribe(
+      admin => this.admin = admin
+    )
   }
 
 }

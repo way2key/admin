@@ -18,6 +18,11 @@ export class AdminDashboardService {
   constructor(private http: HttpClient) { }
 
   getTeacher(): Observable<any> {
+    const url = this.adminUrl + '/teacher'
+    return this.http.get<any>(url, this.httpOptions);
+  }
+
+  getAdmin(): Observable<any> {
     return this.http.get<any>(this.adminUrl, this.httpOptions);
   }
 }

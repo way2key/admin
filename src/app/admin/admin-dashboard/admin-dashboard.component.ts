@@ -9,7 +9,7 @@ import * as io from 'socket.io-client';
   styleUrls: ['./admin-dashboard.component.scss']
 })
 export class AdminDashboardComponent implements OnInit {
-  teacher = {
+  admin = {
     firstname: 'Nom',
     lastname: 'Prenom'
   }
@@ -33,8 +33,8 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   getTeacher(): void {
-  this.adminDashboardService.getTeacher().subscribe(
-    teacher => this.teacher = teacher
+  this.adminDashboardService.getAdmin().subscribe(
+    admin => this.admin = admin
   )
 }
 

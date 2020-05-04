@@ -5,38 +5,28 @@
       <h1>Nouvel Horaire</h1>
       <label>
         <h2>Intitulé</h2>
-        <input type="text" class="time" formControlName="timeplanName" placeholder="Horaire personnalisé">
+        <mat-form-field appearance="outline">
+          <input matInput type="text" formControlName="timeplanName" placeholder="Horaire personnalisé">
+        </mat-form-field>
       </label>
       <label>
         <h2>Temps réglementaire</h2>
-        <input type="time" class="time" formControlName="mandatoryTime" >
+        <input type="time" class="timeChoice" formControlName="mandatoryTime" >
       </label>
     </div>
     <div class="time">
-      <label>
-        <h2>Début de la journée</h2>
-        <input type="time" class="time" formControlName="startOfDay" >
-      </label>
-      <label>
-        <h2>Début des cours</h2>
-        <input type="time" class="time" formControlName="startMorning" >
-      </label>
-      <label>
-        <h2>Début de la pause de midi</h2>
-        <input type="time" class="time" formControlName="endMorning" >
-      </label>
-      <label>
-        <h2>Fin de la pause de midi</h2>
-        <input type="time" class="time" formControlName="startAfternoon" >
-      </label>
-      <label>
-        <h2>Fin des cours</h2>
-        <input type="time" class="time" formControlName="endAfternoon" >
-      </label>
-      <label>
-        <h2>Fin de la journée</h2>
-        <input type="time" class="time" formControlName="endOfDay" >
-      </label>
+      <h2>Début de la journée</h2>
+      <input type="time" class="timeChoice" formControlName="startOfDay" >
+      <h2>Début des cours</h2>
+      <input type="time" class="timeChoice" formControlName="startMorning" >
+      <h2>Début de la pause de midi</h2>
+      <input type="time" class="timeChoice" formControlName="endMorning" >
+      <h2>Fin de la pause de midi</h2>
+      <input type="time" class="timeChoice" formControlName="startAfternoon" >
+      <h2>Fin des cours</h2>
+      <input type="time" class="timeChoice" formControlName="endAfternoon" >
+      <h2>Fin de la journée</h2>
+      <input type="time" class="timeChoice" formControlName="endOfDay" >
     </div>
 
     <div class="canvas">

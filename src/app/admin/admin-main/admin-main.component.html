@@ -1,12 +1,12 @@
 <mat-toolbar>
   <mat-toolbar-row class="toolbar">
     <h1>Admin</h1>
-    <div>
+    <div class="toolbarAction">
+      <p>{{admin.firstname | titlecase }} {{admin.lastname | titlecase}}</p>
       <button class="button is-danger has-text-white" (click)="logAdminOut()">
         <i class="fas fa-sign-out-alt"></i>
       </button>
     </div>
-
   </mat-toolbar-row>
 </mat-toolbar>
 <mat-drawer-container class="app">
