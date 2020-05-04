@@ -2,7 +2,6 @@ const Holiday = require('../data-schematic/holiday-schematic');
 
 
 exports.createHoliday = (holiday) => {
-  console.log(holiday);
   return new Promise( (resolve, reject) => {
     let newHoliday = new Holiday({
       ...holiday
@@ -23,5 +22,17 @@ exports.getHoliday = () => {
     Holiday.find()
     .then((holiday) => resolve(holiday))
     .catch(error => reject("Unable to fetch Holiday from db <= "+error));
+  })
+}
+
+exports.deleteHoliday = (holidayId) => {
+  return new Promise( (resolve, reject) => {
+    Holiday.findByIdAndRemove(holidayId)
+    .then(
+      () => resolve("Holiday supprimé")
+    )
+    .catch(
+      error => reject("Impossible de supprimer le congé " + holidayId + " <= " + error)
+    )
   })
 }

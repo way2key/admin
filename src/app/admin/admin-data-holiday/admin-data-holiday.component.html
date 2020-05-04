@@ -48,10 +48,19 @@
       <h2 class="title">Vacances</h2>
       <div *ngFor="let holiday of holidays">
         <div *ngIf="holiday.startDate!=holiday.endDate" class="holiday">
-          <p>{{holiday.title}}</p>
-          <p>{{holiday.startDate}}</p>
-          <p>{{holiday.endDate}}</p>
-          <p>{{holiday.allowPresence}}</p>
+          <div class="hTitle">
+            <p>{{holiday.title}}</p>
+          </div>
+          <div class="hStartDate">
+            <p>{{holiday.startDate}}</p>
+          </div>
+          <div class="hEndDate">
+            <p>{{holiday.endDate}}</p>
+          </div>
+          <div class="hAllowPresence">
+            <p>{{holiday.allowPresence}}</p>
+          </div>
+          <button type="button" class="button is-danger" (click)="deleteHoliday(holiday._id)"><i class="fas fa-trash"></i></button>
         </div>
       </div>
     </div>
@@ -60,10 +69,19 @@
       <h2 class="title">Jour férié</h2>
       <div *ngFor="let holiday of holidays">
         <div *ngIf="holiday.startDate==holiday.endDate" class="holiday">
-          <p>{{holiday.title}}</p>
-          <p>{{holiday.startDate}}</p>
-          <p>{{holiday.endDate}}</p>
-          <p>{{holiday.allowPresence}}</p>
+          <div class="hTitle">
+            <p>{{holiday.title}}</p>
+          </div>
+          <div class="hStartDate">
+            <p>{{holiday.startDate}}</p>
+          </div>
+          <div class="hEndDate">
+            <p>{{holiday.endDate}}</p>
+          </div>
+          <div class="hAllowPresence">
+            <p>{{holiday.allowPresence}}</p>
+          </div>
+          <button type="button" class="button is-danger" (click)="deleteHoliday(holiday._id)"><i class="fas fa-trash"></i></button>
         </div>
       </div>
     </div>

@@ -40,7 +40,10 @@ export class AdminDataHolidayComponent implements OnInit {
       endDate: date2,
     }
 
-    this.adminDataService.createHoliday(payload).subscribe();
+    this.adminDataService.createHoliday(payload)
+    .subscribe(
+      () => this.getHoliday()
+    );
   }
 
   getHoliday(): void {
@@ -48,10 +51,15 @@ export class AdminDataHolidayComponent implements OnInit {
     .subscribe(
       holidays => {
         this.holidays = holidays;
-        this.getHoliday();
       }
     );
+  }
 
+  deleteHoliday(holidayId): void {
+    this.adminDataService.deleteHoliday(holidayId)
+    .subscribe(
+      () => this.getHoliday()
+    )
   }
 
 }

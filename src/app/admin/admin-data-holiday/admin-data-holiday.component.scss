@@ -57,9 +57,27 @@
 .holidays {
   width: 50%;
 }
+
 .holiday {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   width: 100%;
+  margin: 2px;
+}
+
+.hTitle {
+  width: 20%;
+}
+.hStartDate {
+  width: 15%;
+}
+.hEndDate {
+  width: 15%;
+}
+.hAllowPresence {
+  width: 5%;
+}
+.hAction {
+  width: 5%;
 }

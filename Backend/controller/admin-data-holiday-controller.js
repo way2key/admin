@@ -19,3 +19,13 @@ exports.getHoliday = (req, res) => {
     error => res.status(500).json("Impossible to fetch Holiday :( <= "+error)
   )
 }
+
+exports.deleteHoliday = (req, res) => {
+  action.deleteHoliday(req.params.holidayId)
+  .then(
+    shift => res.status(200).json("Holiday supprimé")
+  )
+  .catch(
+    error => res.status(500).json("Impossible de supprimer l'holiday <= " + error)
+  )
+}

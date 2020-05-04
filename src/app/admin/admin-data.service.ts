@@ -61,4 +61,10 @@ export class AdminDataService {
     return this.http.delete<any>(url, this.httpOptions);
   }
 
+  deleteHoliday(holidayId) {
+    const url = this.apiUrl + '-holiday/' + holidayId;
+    return this.http.delete<any>(url, this.httpOptions);
+  }
+
+
 }

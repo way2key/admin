@@ -7,6 +7,7 @@ const action = {
   getAdminFromToken: tokenService.getAdminFromToken,
   createHoliday: holidayService.createHoliday,
   getHoliday: holidayService.getHoliday,
+  deleteHoliday: holidayService.deleteHoliday,
   createTimeplan: timeplanService.createTimeplan,
   getTimeplan: timeplanService.getTimeplan,
   getShiftFromId: timeplanService.getShiftFromId,

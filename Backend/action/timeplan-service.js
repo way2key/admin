@@ -45,7 +45,6 @@ exports.getTimeplan = () => {
 }
 
 exports.deleteTimeplan = (timeplanId) => {
-  console.log("oui");
   return new Promise( (resolve, reject) => {
     DayPlan.findByIdAndRemove(timeplanId)
     .then(
