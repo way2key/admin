@@ -1,4 +1,4 @@
-const action = require('../action/action.js');
+const action = require('../action/action');
 
 exports.getAnAdmin = (req, res) => {
   const token = req.headers.authorization.split(' ')[1];
@@ -18,6 +18,6 @@ exports.welcomeAMachine = (req, res) => {
     (answer) => res.status(200).json(answer)
   )
   .catch(
-    error => res.status(500).json("Mauvaise annonce"+error)
+    error => res.status(500).json("Mauvaise annonce" + error)
   )
 }

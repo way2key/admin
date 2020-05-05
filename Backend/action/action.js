@@ -1,7 +1,7 @@
-const tokenService = require('./token-service.js');
-const holidayService = require("./holiday-service.js");
-const timeplanService = require("./timeplan-service.js");
-const userService = require("./user-service.js");
+const tokenService = require('./token-service');
+const holidayService = require("./holiday-service");
+const timeplanService = require("./timeplan-service");
+const userService = require("./user-service");
 
 const action = {
   getAdminFromToken: tokenService.getAdminFromToken,

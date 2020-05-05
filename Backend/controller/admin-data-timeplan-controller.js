@@ -1,4 +1,4 @@
-const action = require('../action/action.js');
+const action = require('../action/action');
 
 exports.createTimeplan = (req, res) => {
   action.createTimeplan(req.body)
@@ -6,7 +6,7 @@ exports.createTimeplan = (req, res) => {
     () => res.status(200).json("Horaire créé avec succès :)")
   )
   .catch(
-    error => res.status(500).json("Impossible de créer un horaire <= "+error)
+    error => res.status(500).json("Impossible de créer un horaire <= " + error)
   )
 }
 
@@ -16,7 +16,7 @@ exports.getTimeplan = (req, res) => {
     timeplan => res.status(200).json(timeplan)
   )
   .catch(
-    error => res.status(500).json("Impossible to fetch timeplan :( <= "+error)
+    error => res.status(500).json("Impossible to fetch timeplan :( <= " + error)
   )
 }
 
@@ -26,7 +26,7 @@ exports.getShiftFromId = (req, res) => {
     shift => res.status(200).json(shift)
   )
   .catch(
-    error => res.status(500).json("Impossible to fetch shift :( <= "+error)
+    error => res.status(500).json("Impossible to fetch shift :( <= " + error)
   )
 }
 
@@ -36,6 +36,6 @@ exports.deleteTimeplan = (req, res) => {
     shift => res.status(200).json("Timeplan supprimé")
   )
   .catch(
-    error => res.status(500).json("Impossible to fetch shift")
+    error => res.status(500).json("Impossible to fetch shift <= " + error)
   )
 }

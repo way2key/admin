@@ -3,12 +3,12 @@ const bodyParser = require('body-parser');
 
 const adminDB = require('./database/adminDB');
 
-const adminAuthRoute = require('./route/admin-auth-route.js');
-const adminDashboardRoute = require('./route/admin-dashboard-route.js');
-const adminDataHolidayRoute = require('./route/admin-data-holiday-route.js');
-const adminDataTimeplanRoute = require('./route/admin-data-timeplan-route.js');
-const adminDataStudentRoute = require('./route/admin-data-student-route.js');
-const serverUserRoute = require('./route/server-user-route.js');
+const adminAuthRoute = require('./route/admin-auth-route');
+const adminDashboardRoute = require('./route/admin-dashboard-route');
+const adminDataHolidayRoute = require('./route/admin-data-holiday-route');
+const adminDataTimeplanRoute = require('./route/admin-data-timeplan-route');
+const adminDataStudentRoute = require('./route/admin-data-student-route');
+const serverUserRoute = require('./route/server-user-route');
 
 const api = express();
 

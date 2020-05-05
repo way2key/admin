@@ -1,4 +1,4 @@
-const action = require('../action/action.js');
+const action = require('../action/action');
 
 exports.createHoliday = (req, res) => {
   action.createHoliday(req.body)
@@ -6,7 +6,7 @@ exports.createHoliday = (req, res) => {
     () => res.status(200).json("Vacances créées avec succès :)")
   )
   .catch(
-    error => res.status(500).json("Impossible de créer des vacances <= "+error)
+    error => res.status(500).json("Impossible de créer des vacances <= " + error)
   )
 }
 
@@ -16,7 +16,7 @@ exports.getHoliday = (req, res) => {
     holiday => res.status(200).json(holiday)
   )
   .catch(
-    error => res.status(500).json("Impossible to fetch Holiday :( <= "+error)
+    error => res.status(500).json("Impossible to fetch Holiday :( <= " + error)
   )
 }
 

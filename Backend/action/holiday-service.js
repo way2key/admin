@@ -21,7 +21,7 @@ exports.getHoliday = () => {
   return new Promise( (resolve, reject) => {
     Holiday.find()
     .then((holiday) => resolve(holiday))
-    .catch(error => reject("Unable to fetch Holiday from db <= "+error));
+    .catch(error => reject("Unable to fetch Holiday from db <= " + error));
   })
 }
 

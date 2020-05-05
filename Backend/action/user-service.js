@@ -29,7 +29,7 @@ exports.getAllStudents = () => {
   return new Promise( (resolve, reject) => {
     User.find({type:0})
     .then((students) => resolve(students))
-    .catch(error => reject("Unable to fetch Student from db <= "+error));
+    .catch(error => reject("Unable to fetch Student from db <= " + error));
   })
 }
 
@@ -40,7 +40,7 @@ exports.allotStudent = (student) => {
       () => resolve('success')
     )
     .catch(
-      error => reject("Unable to put student to DB :( <= "+error)
+      error => reject("Unable to put student to DB :( <= " + error)
     )
   })
 }

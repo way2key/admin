@@ -1,7 +1,7 @@
 const User = require('../data-schematic/user-schematic');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const secret = require('../secret.js');
+const secret = require('../secret');
 
 exports.login = (req, res, next) => {
     User.findOne({firstname: req.body.username})
@@ -72,7 +72,9 @@ exports.verifyToken = (req, res, next) => {
         res.status(400).send('false');
       }
     })
-    .catch(error => {res.status(200).send('false');console.log('false');});
+    .catch(
+      error => res.status(200).send('false')
+    );
   }
   catch(e){
     res.status(200).send('false');

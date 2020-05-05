@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const secret = require('../secret.js');
+const secret = require('../secret');
 
 module.exports = (req, res, next) => {
   try {
@@ -12,8 +12,6 @@ module.exports = (req, res, next) => {
       next();
     }
   } catch {
-    res.status(401).json({
-      error: new Error('Invalid request!')
-    });
+    res.status(401).json(new Error('Invalid request!'));
   }
 };
