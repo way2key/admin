@@ -4,7 +4,7 @@
     <button class="button is-info" (click)="randomMachine(clockMachines)">Random</button>
   </div>
   <mat-form-field class="search">
-    <input type="text" placeholder="Trouvez un stagiaire" matInput [formControl]="interaction" [matAutocomplete]="auto" >
+    <input type="text" placeholder="Trouver un stagiaire" matInput [formControl]="interaction" [matAutocomplete]="auto" >
     <button class="clear has-text-white" mat-button mat-icon-button matSuffix (click)="clearSearchField()" *ngIf="searchField">×</button>
     <mat-autocomplete #auto="matAutocomplete">
       <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
@@ -14,38 +14,35 @@
   </mat-form-field>
 </mat-toolbar>
 
+<h2 class="myTitle">Stagiaires</h2>
 <div class="pool">
-  <h2>Stagiaires à placer</h2>
   <ng-container *ngFor="let s of shownStudents">
-    <div class="student">
-      <div class="student-button">
-        <h1 matSubheader>{{s.firstname}} {{s.lastname}}</h1>
-        <div class="buttons has-addons">
-          <button class="button is-link" *ngFor="let cm of clockMachines" (click)="s.clockMachine=cm._id">{{cm.title}}</button>
-        </div>
+    <div class="poolStudent">
+      <h1 class="name">{{s.firstname}} {{s.lastname}}</h1>
+      <div class="buttons has-addons action">
+        <button class="button is-link" *ngFor="let cm of clockMachines" (click)="s.clockMachine=cm._id">{{cm.title}}</button>
       </div>
     </div>
   </ng-container>
 </div>
 
+<mat-divider></mat-divider>
+
+<h2 class="myTitle">Machines disponibles</h2>
 <div class="allot">
-  <h2>Machines disponibles</h2>
-  <mat-grid-list cols="2" rowHeight="2:1">
-    <mat-grid-tile *ngFor="let cm of clockMachines">
-      <mat-grid-tile-header class="header">{{cm.title}}</mat-grid-tile-header>
-      <ng-container *ngFor="let s of students">
-        <div class="student" *ngIf="s.clockMachine==cm._id">
-          <h1 matSubheader>{{s.firstname}} {{s.lastname}}</h1>
-          <div class="student-button">
-            <div class="buttons has-addons">
-              <button class="button is-link" *ngFor="let cm of clockMachines">{{cm.title}}</button>
-            </div>
+  <div class="tile is-ancestor">
+    <div class="tile is-parent is-vertical">
+      <div class="tile is-info notification is-vertical" *ngFor="let cm of clockMachines">
+        <div class="tile is-child box">
+          <p class="title">{{cm.title}}</p>
+        </div>
+        <div class="machineStudent">
+          <div class="student" *ngFor="let s of students">
+            <h1 *ngIf="s.clockMachine==cm._id">{{s.firstname}} {{s.lastname}}</h1>
           </div>
         </div>
-      </ng-container>
-    </mat-grid-tile>
-  </mat-grid-list>
+      </div>
+    </div>
+  </div>
+  <button mat-dialog-close class="button is-success validate" (click)="allotStudent()">Valider</button>
 </div>
-
-
-<button mat-dialog-close class="button is-success" (click)="allotStudent()">Valider</button>
