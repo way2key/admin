@@ -9,7 +9,7 @@ const userSchema = mongoose.Schema({
   type: {type: Number, required:true},
   data: {type: [String], required:false},
   performedTime:  {type: Number, required:false},
-  timeplanId: {type: String, required:false, sparse: true},
+  weekId: {type: String, required:false, sparse: true},
   clockMachine: {type: String, required:false}
 });
 

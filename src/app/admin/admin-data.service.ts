@@ -66,5 +66,20 @@ export class AdminDataService {
     return this.http.delete<any>(url, this.httpOptions);
   }
 
+  getWeek() {
+    const url = this.apiUrl + '-week/';
+    return this.http.get<any>(url, this.httpOptions);
+  }
+
+  createWeek(week) {
+    const url = this.apiUrl + '-week/';
+    return this.http.post<any>(url, week, this.httpOptions);
+  }
+
+  deleteWeek(weekId) {
+    const url = this.apiUrl + '-week/' + weekId;
+    return this.http.delete<any>(url, this.httpOptions);
+  }
+
 
 }

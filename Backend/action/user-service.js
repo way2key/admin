@@ -11,7 +11,7 @@ exports.createAStudent = (student) => {
       lastname: student.lastname,
       hash: student.hash,
       clockMachine: student.clockMachine,
-      timeplanId: student.timeplanId,
+      weekId: student.weekId,
       type: 0
     });
 

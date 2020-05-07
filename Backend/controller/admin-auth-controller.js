@@ -52,7 +52,7 @@ exports.signupUser = (req, res, next) => {
     hash: req.body.hash,
     type: 0,
     performedTime: req.body.performedTime,
-    timeplanId: req.body.timeplanId
+    weekId: req.body.weekId
   });
   usr.save()
   .then(() => res.status(201).json({ message: 'Utilisateur enregistré'}))

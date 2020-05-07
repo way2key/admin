@@ -7,9 +7,10 @@ import {Component, OnInit } from '@angular/core';
 })
 export class AdminDataComponent implements OnInit {
   navLinks = [
-    { path: 'holiday', label: 'Vacance' },
-    { path: 'timeplan', label: 'Horaire' },
     { path: 'student', label: 'Stagiaire' },
+    { path: 'timeplan', label: 'Horaire' },
+    { path: 'week', label: 'Semaine' },
+    { path: 'holiday', label: 'Vacances' },
   ];
   constructor() { }
 

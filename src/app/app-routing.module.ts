@@ -10,6 +10,7 @@ import { AdminStartComponent } from './admin/admin-start/admin-start.component';
 import { AdminDataComponent } from './admin/admin-data/admin-data.component';
 import { AdminDataTimeplanComponent } from './admin/admin-data-timeplan/admin-data-timeplan.component';
 import { AdminDataHolidayComponent } from './admin/admin-data-holiday/admin-data-holiday.component';
+import { AdminDataWeekComponent } from './admin/admin-data-week/admin-data-week.component';
 import { AdminDataStudentComponent } from './admin/admin-data-student/admin-data-student.component';
 
 const routes: Routes = [
@@ -21,6 +22,7 @@ const routes: Routes = [
       {path:"start" , component: AdminStartComponent},
       {path:"data" , component: AdminDataComponent, children:[
         {path:"holiday"      , component: AdminDataHolidayComponent},
+        {path:"week"      , component: AdminDataWeekComponent},
         {path:"timeplan"      , component: AdminDataTimeplanComponent},
         {path:"student"      , component: AdminDataStudentComponent},
       ]},
