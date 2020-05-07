@@ -16,6 +16,7 @@ const action = {
   createAStudent: userService.createAStudent,
   getAllStudents: userService.getAllStudents,
   allotStudent: userService.allotStudent,
+  deleteStudent: userService.deleteStudent,
   getUserFromToken: userService.getUserFromToken,
   createWeek: weekService.createWeek,
   getAllWeeks: weekService.getAllWeeks,

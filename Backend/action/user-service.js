@@ -59,3 +59,15 @@ exports.getUserFromToken = (token) => {
     .catch(error => reject(teacher));
   })
 }
+
+exports.deleteStudent = (studentId) => {
+  return new Promise( (resolve, reject) => {
+    User.findByIdAndRemove(studentId)
+    .then(
+      () => resolve("stagiaire supprimé")
+    )
+    .catch(
+      error => reject("Impossible de supprimer le Stagiaire " + studentId + " <= " + error)
+    )
+  })
+}

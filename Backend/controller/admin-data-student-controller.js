@@ -29,3 +29,13 @@ exports.allotStudent = (req, res) => {
     error => res.status(500).json("Impossible to modify student <= " + error)
   )
 }
+
+exports.deleteStudent = (req, res) => {
+  action.deleteStudent(req.params.id)
+  .then(
+    () => res.status(200).json("Stagiaire supprimé")
+  )
+  .catch(
+    error => res.status(500).json("Impossible to delete student <= " + error)
+  )
+}

@@ -66,6 +66,11 @@ export class AdminDataService {
     return this.http.delete<any>(url, this.httpOptions);
   }
 
+  deleteStudent(studentId) {
+    const url = this.apiUrl + '-student/' + studentId;
+    return this.http.delete<any>(url, this.httpOptions);
+  }
+
   getWeek() {
     const url = this.apiUrl + '-week/';
     return this.http.get<any>(url, this.httpOptions);

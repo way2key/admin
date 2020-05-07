@@ -4,7 +4,7 @@ import { AdminMainComponent } from './admin/admin-main/admin-main.component';
 import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
 import { AdminBackupComponent } from './admin/admin-backup/admin-backup.component';
 import { AdminInfoComponent } from './admin/admin-info/admin-info.component';
-import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
 import { AdminAuthGuard } from './admin/admin-auth.guard';
 import { AdminStartComponent } from './admin/admin-start/admin-start.component';
 import { AdminDataComponent } from './admin/admin-data/admin-data.component';

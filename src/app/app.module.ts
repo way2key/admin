@@ -40,7 +40,6 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter'
 import { AdminMainComponent } from './admin/admin-main/admin-main.component';
 import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
 import { AdminBackupComponent } from './admin/admin-backup/admin-backup.component';
-import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AdminInfoComponent } from './admin/admin-info/admin-info.component';
 import { AdminDataComponent } from './admin/admin-data/admin-data.component';
 import { AdminDataStudentComponent } from './admin/admin-data-student/admin-data-student.component';
@@ -49,6 +48,7 @@ import { AdminDataHolidayComponent } from './admin/admin-data-holiday/admin-data
 import { AdminStartComponent } from './admin/admin-start/admin-start.component';
 import { AdminDataStudentAllotStudentComponent } from './admin/admin-data-student-allot-student/admin-data-student-allot-student.component';
 import { AdminDataWeekComponent } from './admin/admin-data-week/admin-data-week.component';
+import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +56,6 @@ import { AdminDataWeekComponent } from './admin/admin-data-week/admin-data-week.
     AdminMainComponent,
     AdminDashboardComponent,
     AdminBackupComponent,
-    AdminLoginComponent,
     AdminInfoComponent,
     AdminDataComponent,
     AdminDataStudentComponent,
@@ -65,6 +64,7 @@ import { AdminDataWeekComponent } from './admin/admin-data-week/admin-data-week.
     AdminStartComponent,
     AdminDataStudentAllotStudentComponent,
     AdminDataWeekComponent,
+    AdminLoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -97,7 +97,9 @@ import { AdminDataWeekComponent } from './admin/admin-data-week/admin-data-week.
     MatButtonModule,
     MatMomentDateModule,
   ],
-  providers: [],
+  providers: [
+    MatSnackBar,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

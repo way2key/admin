@@ -8,5 +8,6 @@ const adminDataStudentController = require('../controller/admin-data-student-con
 router.put('/', auth, adminDataStudentController.allotStudent);
 router.post('/', adminDataStudentController.createAStudent);
 router.get('/', auth, adminDataStudentController.getAllStudents);
+router.delete('/:id', auth, adminDataStudentController.deleteStudent);
 
 module.exports = router;
