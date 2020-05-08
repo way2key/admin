@@ -20,6 +20,16 @@ exports.getAllWeeks = (req, res) => {
   )
 }
 
+exports.getAWeek = (req, res) => {
+  action.getAWeek(req.params.weekId)
+  .then(
+    week => res.status(200).json(week)
+  )
+  .catch(
+    error => res.status(500).json("Impossible to fetch the week" + weekId + " :( <= " + error)
+  )
+}
+
 exports.deleteWeek = (req, res) => {
   action.deleteWeek(req.params.weekId)
   .then(

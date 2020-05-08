@@ -27,6 +27,18 @@ exports.getAllWeeks = () => {
   })
 }
 
+exports.getAWeek = (weekId) => {
+  return new Promise( (resolve, reject) => {
+    Week.findOne({_id: weekId})
+    .then(
+      week => resolve(week)
+    )
+    .catch(
+      error => reject("Impossible de récupérer la semaine " + weekId + " <= " + error)
+    )
+  })
+}
+
 exports.deleteWeek = (weekId) => {
   return new Promise( (resolve, reject) => {
     Week.findByIdAndRemove(weekId)

@@ -134,18 +134,6 @@ export class AdminDataTimeplanComponent implements OnInit {
     .subscribe(
       timeplans => {
         this.timeplans = timeplans;
-        for(let timeplan of this.timeplans){
-          timeplan.data = [];
-          for(let shiftId of timeplan.shift){
-            this.adminDataService.getShiftFromId(shiftId)
-            .subscribe(
-              data => {
-                timeplan.data.push(data.startTime);
-                timeplan.data.push(data.endTime);
-              }
-            )
-          }
-        }
       }
     )
   }

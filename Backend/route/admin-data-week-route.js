@@ -7,6 +7,7 @@ const adminDataWeekController = require('../controller/admin-data-week-controlle
 //Routes
 router.post('/', auth, adminDataWeekController.createWeek);
 router.get('/', auth, adminDataWeekController.getAllWeeks);
+router.get('/:weekId', adminDataWeekController.getAWeek);
 router.delete('/:weekId', auth, adminDataWeekController.deleteWeek);
 
 module.exports = router;

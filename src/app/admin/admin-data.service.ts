@@ -26,11 +26,6 @@ export class AdminDataService {
     return this.http.get<any>(url, this.httpOptions);
   }
 
-  getShiftFromId(shiftId: string) {
-    const url = this.apiUrl + '-timeplan/shift/'+shiftId;
-    return this.http.get<any>(url, this.httpOptions);
-  }
-
   getStudents() {
     const url = this.apiUrl + '-student/';
     return this.http.get<any>(url, this.httpOptions);

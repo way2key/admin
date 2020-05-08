@@ -42,17 +42,17 @@
 <mat-divider></mat-divider>
 <h1>Horaires Existants</h1>
 <div *ngFor="let timeplan of timeplans">
-  <div class="dayPlan">
+  <div class="Timeplan">
     <h3>{{timeplan.name}}</h3>
     <div class="time">
       <p>{{"startOfDay "+timeplan.startOfDay}}</p>
       <p>{{"endOfDay "+timeplan.endOfDay}}</p>
     </div>
     <div class="boundary">
-    <p>{{"Début des cours: "+timeplan.data[0]}}</p>
-    <p>{{"Début de la pause: "+timeplan.data[1]}}</p>
-    <p>{{"Fin de la pause: "+timeplan.data[2]}}</p>
-    <p>{{"Fin des cours: "+timeplan.data[3]}}</p>
+      <div class="shift" *ngFor="let s of timeplan.shift">
+        <p>{{"Début de la plage: " + s.start}}</p>
+        <p>{{"Fin de la plage: " + s.end}}</p>
+      </div>
     </div>
     <div class="action">
       <button type="button" class="button is-danger" (click)="deleteTimeplan(timeplan._id)"><i class="fas fa-trash"></i></button>

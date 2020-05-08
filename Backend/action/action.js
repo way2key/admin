@@ -6,19 +6,24 @@ const weekService = require('./week-service');
 
 const action = {
   getAdminFromToken: tokenService.getAdminFromToken,
+
   createHoliday: holidayService.createHoliday,
   getHoliday: holidayService.getHoliday,
   deleteHoliday: holidayService.deleteHoliday,
+
   createTimeplan: timeplanService.createTimeplan,
   getTimeplan: timeplanService.getTimeplan,
-  getShiftFromId: timeplanService.getShiftFromId,
+  getATimeplan: timeplanService.getATimeplan,
   deleteTimeplan: timeplanService.deleteTimeplan,
+
   createAStudent: userService.createAStudent,
+  getUserFromToken: userService.getUserFromToken,
   getAllStudents: userService.getAllStudents,
   allotStudent: userService.allotStudent,
   deleteStudent: userService.deleteStudent,
-  getUserFromToken: userService.getUserFromToken,
+
   createWeek: weekService.createWeek,
+  getAWeek: weekService.getAWeek,
   getAllWeeks: weekService.getAllWeeks,
   deleteWeek: weekService.deleteWeek,
 }

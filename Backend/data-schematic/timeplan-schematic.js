@@ -1,14 +1,14 @@
 const mongoose = require('mongoose');
 const uniqueValidator = require('mongoose-unique-validator');
 
-const dayPlanSchema = mongoose.Schema({
+const timeplanSchema = mongoose.Schema({
   startOfDay: {type: String, required:true, default:"06:00:00"},
   endOfDay: {type: String, required:true, default:"22:00:00"},
   requiredTime: {type: Number, required:true},
-  shift: {type: [String], required:true},
+  shift: {type: [Object], required:true},
   name: {type: String, required:true}
 });
 
-dayPlanSchema.plugin(uniqueValidator);
+timeplanSchema.plugin(uniqueValidator);
 
-module.exports = mongoose.model('DayPlan', dayPlanSchema);
+module.exports = mongoose.model('Timeplan', timeplanSchema);

@@ -20,13 +20,13 @@ exports.getTimeplan = (req, res) => {
   )
 }
 
-exports.getShiftFromId = (req, res) => {
-  action.getShiftFromId(req.params.shiftId)
+exports.getATimeplan = (req, res) => {
+  action.getATimeplan(req.params.timeplanId)
   .then(
-    shift => res.status(200).json(shift)
+    timeplan => res.status(200).json(timeplan)
   )
   .catch(
-    error => res.status(500).json("Impossible to fetch shift :( <= " + error)
+    error => res.status(500).json("Impossible to fetch the timeplan " + timeplanId + " :( <= " + error)
   )
 }
 

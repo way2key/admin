@@ -9,7 +9,7 @@ const adminDataStudentRoute = require('./route/admin-data-student-route');
 const adminDataTimeplanRoute = require('./route/admin-data-timeplan-route');
 const adminDataWeekRoute = require('./route/admin-data-week-route');
 const adminDataHolidayRoute = require('./route/admin-data-holiday-route');
-const serverUserRoute = require('./route/server-user-route');
+const serverRoute = require('./route/server-route');
 
 const api = express();
 
@@ -21,7 +21,7 @@ api.use((req, res, next) => {
 });
 
 api.use(bodyParser.json());
-api.use('/api/server-user', serverUserRoute);
+api.use('/api/server', serverRoute);
 api.use('/api/admin-data-student', adminDataStudentRoute);
 api.use('/api/admin-data-timeplan', adminDataTimeplanRoute);
 api.use('/api/admin-data-week', adminDataWeekRoute);
