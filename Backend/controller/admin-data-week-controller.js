@@ -26,7 +26,7 @@ exports.getAWeek = (req, res) => {
     week => res.status(200).json(week)
   )
   .catch(
-    error => res.status(500).json("Impossible to fetch the week" + weekId + " :( <= " + error)
+    error => res.status(500).json("Impossible to fetch the week" + req.params.weekId + " :( <= " + error)
   )
 }
 
