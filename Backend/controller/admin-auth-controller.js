@@ -4,25 +4,28 @@ const jwt = require('jsonwebtoken');
 const secret = require('../secret');
 
 exports.login = (req, res, next) => {
-    User.findOne({firstname: req.body.username})
+    User.findOne({firstname: req.body.username, type: {$gte:1}})
     .then(usr => {
-      if(!usr || usr.type !== 2){
-        return res.status(401).json({error: "Utilisateur inexistant ou Mot de passe incorrect"});
+      if(!usr){
+        return res.status(401).json({error: "Utilisateur inexistant ou Mot de passe incorrect."});
       }
       bcrypt.compare(req.body.password, usr.password)
-      .then(valid =>{
-        if(!valid){
-          return res.status(401).json({error: "Utilisateur inexistant ou Mot de passe incorrect."});
+      .then(
+        valid => {
+          if(!valid) {
+            return res.status(401).json({error: "Utilisateur inexistant ou Mot de passe incorrect."});
+          }
+          res.status(200).json(
+            {
+            userId: usr._id,
+            token: jwt.sign(
+              {userId: usr._id},
+              secret,
+              { expiresIn: '24h'}
+            )}
+          );
         }
-        res.status(200).json({
-          userId: usr._id,
-          token: jwt.sign(
-            {userId: usr._id},
-            secret,
-            { expiresIn: '24h'}
-          )
-        });
-      })
+      )
       .catch(error => res.status(500).json({ error }));
     })
     .catch(error => res.status(500).json({ error }));
@@ -35,7 +38,7 @@ exports.signupAdmin = (req, res, next) => {
         firstname: req.body.firstname,
         lastname: req.body.lastname,
         password: cryptedPassword,
-        type: 2
+        type: req.body.type
     });
     usr.save()
     .then(() => res.status(201).json({message: 'Administrateur enregistré'}))
@@ -62,13 +65,35 @@ exports.signupUser = (req, res, next) => {
 exports.verifyToken = (req, res, next) => {
   try{
     verifiedJwt = jwt.verify(req.params.token, secret);
-
     let userId = verifiedJwt.userId;
-    User.findOne({_id: userId})
-    .then((user) => {
-      if(user) {
+    User.findOne({_id: userId, type:{$gte:1}})
+    .then(user => {
+      if(user){
         res.status(200).send('true');
-      } else {
+      }
+      else{
+        res.status(400).send('false');
+      }
+    })
+    .catch(
+      error => res.status(200).send('false')
+    );
+  }
+  catch(e){
+    res.status(200).send('false');
+  }
+}
+
+exports.verifyAdminToken = (req, res, next) => {
+  try{
+    verifiedJwt = jwt.verify(req.params.token, secret);
+    let userId = verifiedJwt.userId;
+    User.findOne({_id: userId, type:2})
+    .then(user => {
+      if(user){
+        res.status(200).send('true');
+      }
+      else{
         res.status(400).send('false');
       }
     })

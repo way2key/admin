@@ -32,7 +32,7 @@ export class AdminAuthService {
 
   isAuthenticated(): Observable<boolean>{
     let token = localStorage.getItem('token');
-    const url = this.verifyTokenUrl + '/' + token;
+    const url = this.verifyTokenUrl + '/admin/' + token;
     return this.http.get<boolean>(url, this.httpOptions);
   }
 }
