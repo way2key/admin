@@ -60,6 +60,14 @@ const dashboard = io
   dashboard.on('disconnect', () => console.log('Capitaine, le tableau de bord vient de se déconnecter !'))
 })
 
+const allotStudent = io
+.of('/allotStudent')
+.on('connection', socket => {
+  console.log("Capitaine, l'outils de répartition est en ligne");
+  allotStudent.emit("updateClockMachine", clockMachines);
+  allotStudent.on('disconnect', () => console.log("Capitaine, l'outil de réparation est hors-ligne"))
+})
+
 const clockMachine = io
 .of('/clockMachine')
 .on('connection', socket => {
@@ -74,6 +82,12 @@ const clockMachine = io
     dashboard.emit("newClockMachine", machine);
   })
 
+  //Théorique
+  socket.on('update', machine => {
+    allotStudent.emit("updateClockMachine", clockMachines);
+    dashboard.emit("updateClockMachine", clockMachines);
+  })
+
   socket.on('disconnect', user => {
     console.log("Pointeuse hors ligne");
     clockMachines = clockMachines.filter(item => item.socketId !== socket.id);
@@ -81,12 +95,3 @@ const clockMachine = io
   });
 
 });
-
-
-const allotStudent = io
-.of('/allotStudent')
-.on('connection', socket => {
-  console.log("Capitaine, l'outils de répartition est en ligne");
-  allotStudent.emit("updateClockMachine", clockMachines);
-  allotStudent.on('disconnect', () => console.log("Capitaine, l'outil de réparation est hors-ligne"))
-})
