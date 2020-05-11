@@ -17,15 +17,18 @@ const action = {
   deleteTimeplan: timeplanService.deleteTimeplan,
 
   createAStudent: userService.createAStudent,
+  createATeacher: userService.createATeacher,
   getUserFromToken: userService.getUserFromToken,
   getAllStudents: userService.getAllStudents,
+  getAllTeachers: userService.getAllTeachers,
   allotStudent: userService.allotStudent,
-  deleteStudent: userService.deleteStudent,
+  deleteUser: userService.deleteUser,
 
   createWeek: weekService.createWeek,
   getAWeek: weekService.getAWeek,
   getAllWeeks: weekService.getAllWeeks,
   deleteWeek: weekService.deleteWeek,
+
 }
 
 module.exports = action;

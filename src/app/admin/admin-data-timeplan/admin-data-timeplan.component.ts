@@ -132,9 +132,7 @@ export class AdminDataTimeplanComponent implements OnInit {
   getTimeplan(): void {
     this.adminDataService.getTimeplan()
     .subscribe(
-      timeplans => {
-        this.timeplans = timeplans;
-      }
+      timeplans => this.timeplans = timeplans
     )
   }
 

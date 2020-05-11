@@ -49,6 +49,7 @@ import { AdminStartComponent } from './admin/admin-start/admin-start.component';
 import { AdminDataStudentAllotStudentComponent } from './admin/admin-data-student-allot-student/admin-data-student-allot-student.component';
 import { AdminDataWeekComponent } from './admin/admin-data-week/admin-data-week.component';
 import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
+import { AdminDataTeacherComponent } from './admin/admin-data-teacher/admin-data-teacher.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
     AdminDataStudentAllotStudentComponent,
     AdminDataWeekComponent,
     AdminLoginComponent,
+    AdminDataTeacherComponent,
   ],
   imports: [
     BrowserModule,

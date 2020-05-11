@@ -12,6 +12,7 @@ import { AdminDataTimeplanComponent } from './admin/admin-data-timeplan/admin-da
 import { AdminDataHolidayComponent } from './admin/admin-data-holiday/admin-data-holiday.component';
 import { AdminDataWeekComponent } from './admin/admin-data-week/admin-data-week.component';
 import { AdminDataStudentComponent } from './admin/admin-data-student/admin-data-student.component';
+import { AdminDataTeacherComponent } from './admin/admin-data-teacher/admin-data-teacher.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/admin/login', pathMatch: 'full'},
@@ -25,6 +26,7 @@ const routes: Routes = [
         {path:"week"      , component: AdminDataWeekComponent},
         {path:"timeplan"      , component: AdminDataTimeplanComponent},
         {path:"student"      , component: AdminDataStudentComponent},
+        {path:"teacher"      , component: AdminDataTeacherComponent},
       ]},
       {path:"backup" , component: AdminBackupComponent},
       {path:"info" , component: AdminInfoComponent},

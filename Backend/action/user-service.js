@@ -25,11 +25,38 @@ exports.createAStudent = (student) => {
   })
 }
 
+exports.createATeacher = (teacher) => {
+  return new Promise( (resolve, reject) => {
+    bcrypt.hash(teacher.password, 10)
+    .then(
+      cryptedPassword => {
+        const usr = new User({
+          firstname: teacher.firstname,
+          lastname: teacher.lastname,
+          password: cryptedPassword,
+          type: 1
+        });
+        return usr.save()
+      }
+    )
+    .then(() => resolve("Enseigant enregistré"))
+    .catch(error => reject(" impossible de sauvegarder l'enseigant <= " + error));
+  })
+}
+
 exports.getAllStudents = () => {
   return new Promise( (resolve, reject) => {
     User.find({type:0})
     .then((students) => resolve(students))
     .catch(error => reject("Unable to fetch Student from db <= " + error));
+  })
+}
+
+exports.getAllTeachers = () => {
+  return new Promise( (resolve, reject) => {
+    User.find({type:1})
+    .then( teachers => resolve(teachers))
+    .catch(error => reject("Unable to fetch teachers from db <= " + error));
   })
 }
 
@@ -60,14 +87,14 @@ exports.getUserFromToken = (token) => {
   })
 }
 
-exports.deleteStudent = (studentId) => {
+exports.deleteUser = (userId) => {
   return new Promise( (resolve, reject) => {
-    User.findByIdAndRemove(studentId)
+    User.findByIdAndRemove(userId)
     .then(
-      () => resolve("stagiaire supprimé")
+      () => resolve("Utilisateur supprimé")
     )
     .catch(
-      error => reject("Impossible de supprimer le Stagiaire " + studentId + " <= " + error)
+      error => reject("Impossible de supprimer l'utilisateur " + userId + " <= " + error)
     )
   })
 }

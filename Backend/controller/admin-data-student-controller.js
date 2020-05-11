@@ -31,7 +31,7 @@ exports.allotStudent = (req, res) => {
 }
 
 exports.deleteStudent = (req, res) => {
-  action.deleteStudent(req.params.id)
+  action.deleteUser(req.params.id)
   .then(
     () => res.status(200).json("Stagiaire supprimé")
   )

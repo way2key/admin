@@ -81,5 +81,21 @@ export class AdminDataService {
     return this.http.delete<any>(url, this.httpOptions);
   }
 
+  createTeacher(payload) {
+    const url = this.apiUrl + '-teacher/';
+    return this.http.post<any>(url, payload, this.httpOptions);
+  }
+
+  getAllTeachers() {
+    const url = this.apiUrl + '-teacher/';
+    return this.http.get<any>(url, this.httpOptions);
+  }
+
+  deleteTeacher(teacherId) {
+    const url = this.apiUrl + '-teacher/' + teacherId;
+    console.log(url);
+
+    return this.http.delete<any>(url, this.httpOptions);
+  }
 
 }

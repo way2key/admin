@@ -11,6 +11,7 @@ export class AdminDataComponent implements OnInit {
     { path: 'timeplan', label: 'Horaire' },
     { path: 'week', label: 'Semaine' },
     { path: 'holiday', label: 'Vacances' },
+    { path: 'teacher', label: 'Enseignant' },
   ];
   constructor() { }
 
